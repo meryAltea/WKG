@@ -1,0 +1,47 @@
+<div>
+	<form novalidate name="frmUsuario">
+		<div>
+			<label>Login:</label> <input type="text" name="txtLogin"
+				ng-minlength="6" ng-maxlength="10" ng-model="usuario.login" required />
+			<span
+				ng-show="frmUsuario.txtLogin.$error.required && frmUsuario.txtLogin.$dirty">Login
+				Obrigatorio</span>
+		</div>
+		<div>
+			<label>Senha:</label> <input type="password" name="passSenha"
+				ng-minlength="8" ng-maxlength="20" ng-model="usuario.senha" required />
+			<span
+				ng-show="frmUsuario.passSenha.$error.required && frmUsuario.passSenha.$dirty">Senha
+				Obrigatória</span>
+				<span ng-show="frmUsuario.passSenha.$error.minlength">Senha pequena!</span>
+		</div>
+		<div>
+			<label>Perfil:</label>
+			  <select   ng-model= "usuario.perfil.id" ng-controller="perfilController" > 
+			    <option   ng-repeat="e in perfis" ng-value="e.id"> {{e.descricao}}</option>
+			
+			
+		    </select> 
+		
+	<!-- <select data-ng-model="usuario.perfil.id" data-ng-options="p as p.descricao for p in perfis"></select> --> 
+		<!--   <select ng-model="usuario.perfil.id" ng-options="p.id as p.descricao for p in perfils"></select> -->
+		
+		
+		
+		
+		<input type="button" value="Salvar"  ng-click="salvarUsuario()"  />
+		<input type="button" value="Limpar"  ng-click="cancelar()" ng-disabled= "frmUsuario.$invalid" />
+		
+		</div>
+		<div ng-repeat="usu in usuarios">
+		{{usu.id + '-'+ usu.login}} <input type="button" value="excluir"
+			ng-click="excluirUsuario(usu)" /> <input type="button"
+			value="Alterar" ng-click="preparaAlterar(usu)" /> 
+			<a href="usuarios/{{usu.id}}">Detalhes dos Usuários</a>
+
+	</div>
+	</form>
+
+
+
+</div>

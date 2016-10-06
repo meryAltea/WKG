@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="appUsuario">
+<head>
+<base href="/"/>
+<meta charset="UTF-8"/>
+<title>Home</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+<script src="./js/app.js"></script>
+<script src="./js/controller/main-controller.js"></script>
+<script src="./js/controller/usuario-controller.js"></script>
+<script src="./js/controller/perfil-controller.js"></script>
+<script src="./js/controller/franqueado-controller.js"></script>
+<script src="./js/controller/atendente-controller.js"></script>
+<script src="./js/controller/associado-controller.js"></script>
+</head>
+<body ng-controller="mainController">
+
+Olá
+<a href="/usuarios"> Usuarios</a>
+<a href="/perfis"> Perfis</a>
+<a href= "/franqueados">Franqueados</a>
+<a href= "/atendentes">Atendentes</a>
+<a href= "/associados">Associados</a>
+<div ng-view="ng-view">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<div>
+<form novalidate name="frmPerfil">
+<input type="text" name="txtDescricao" ng-model="perfil.descricao"/>
+
+<input type="button" value="Salvar"  ng-click="salvarPerfil()" />
+<div ng-repeat="e in perfis">{{e.id}} {{e.descricao}}<input type="button" value="Excluir"  ng-click="excluirPerfil(e)" />
+<input type="button" value="Alterar"  ng-click="preparaAlterar(e)" />
+</div>
+</form>
+
+</div>

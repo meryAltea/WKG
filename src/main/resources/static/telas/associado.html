@@ -1,0 +1,23 @@
+<style>
+	fieldset{
+		display:inline;
+	}
+</style>
+<div>
+	<form novalidate name="frmAssociado">
+		<div>
+			<label>Nome:</label> <input type="text" name="txtNome" ng-maxlength="30" ng-model="associado.nomeAssc" required /> 
+			<span ng-show="frmAssociado.txtNome.$error.required && frmAssociado.txtNome.$dirty">Nome Obrigatório!</span> 
+			<span ng-show="frmAssociado.txtNome.$error.maxlength">Nome muito grande!</span>	
+		</div>
+		<div>
+			<label>Email:</label> <input type="email" name="email"ng-minlength="10" ng-maxlength="11" ng-model="associado.emailAssc"required /> 
+			<span ng-show="frmAssociado.email.$error.required && frmAssociado.email.$dirty">Email Obrigatório</span> 
+			<span ng-show="frmAssociado.email.$error.maxlength">Email muito grande!</span>
+			<span ng-show="frmAssociado.txtEmail.$error.email">Email Inválido!</span>
+			<input type="button" value="Salvar"  ng-click="salvarAssociado()"  />
+			<input type="button" value="Limpar"  ng-click="cancelar()" ng-disabled= "frmAssociado.$invalid" />
+		</div>
+	</form>
+
+</div>
