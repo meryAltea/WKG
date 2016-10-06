@@ -3,3 +3,4 @@
 .settings/
 target/
 .metadata/
+/src/main/resources/static/bower_components/*
