@@ -10,10 +10,11 @@ appUsuario.controller("usuarioController", function($scope, $http) {
 		});
 	};
 	$scope.salvarUsuario=function(){
-		if($scope.usuario.id!=null){
-			alterarUsuario();
-		}else{
+		if($scope.usuario.id==undefined){
 			cadastrarUsuario();
+		}else{
+			
+			alterarUsuario();
 		}
 		
 	};

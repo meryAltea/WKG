@@ -3,113 +3,195 @@
 		display:inline;
 	}
 </style>
-<div>
-	<form novalidate name="frmFranqueado">
-		<div>
+
+
+<div class="row">
+	<form class="col s12" novalidate name="frmFranqueado">
+		<div class="row">
+        	<div class="input-field col s6">
+        	
+        		<i class="material-icons prefix">account_circle</i>
+          		<input id="icon_prefix" type="text" class="validate" name="txtNome" ng-maxlength="30" ng-model="franqueado.nomeFrq" required/>
+          		<label for="icon_prefix">Nome Completo</label>
+        		<span ng-show="{{teste}}">Nome Obrigatório!</span>
+		    	<span ng-show="frmFranqueado.txtNome.$error.maxlength">Nome muito grande!</span>
+        </div>
+        
+<!-- 		<div>
 			<label>Nome:</label> <input type="text" name="txtNome"ng-maxlength="30" ng-model="franqueado.nomeFrq" required /> 
 			<span ng-show="{{teste}}">Nome Obrigatório!</span>
 		    <span ng-show="frmFranqueado.txtNome.$error.maxlength">Nome muito grande!</span>
-		</div>
-		<div>
-			<label>Data de Nascimento:</label> <input type="date" name="dtData" ng-minlength="8" ng-model="franqueado.dataNascFrq" required /> 
+		</div> -->
+		
+		<div class="input-field col s6"> 
+			<i class="material-icons prefix">today</i>
+			<input id ="icon_today" class="validate" type="text" name="dtData" ng-model="franqueado.dataNascFrq" ng-minlength="8"  required />
+			<label for="icon_today">Data de Nascimento</label>  
 			<span ng-show="frmFranqueado.dtData.$error.required && frmFranqueado.dtData.$dirty">Data Obrigatória!</span> 
 			<span ng-show="frmFranqueado.dtData.$error.minlength">Data pequena!</span>
 		</div>
-		<div>
-			<label>CNPJ:</label> <input type="text" name="numCnpj" ng-minlength="14" ng-maxlength="14" ng-model="franqueado.cnpjFrq" required /> 
+	</div>	
+	<div class=row"">
+        <div class="input-field col s6">
+        	<i class="material-icons prefix">store</i>
+        	<input id ="icon_store" class="validate" type="text" name="numCnpj" ng-minlength="14" ng-maxlength="14" ng-model="franqueado.cnpjFrq" required /> 
+			<label for="icon_store">CNPJ</label> 
 			<span ng-show="frmFranqueado.numCnpj.$error.required && frmFranqueado.numCnpj.$dirty">Cnpj Obrigatório!</span> 
 			<span ng-show="frmFranqueado.numCnpj.$error.maxlength">Cnpj muito grande!</span>
 			<span ng-show="frmFranqueado.numCnpj.$error.minlength">Cnpj pequeno!</span>
 		</div>
-		<div>
-			<label>Telefone Fixo:</label> <input type="tel" name="numTel" ng-maxlength="10" ng-minlength="10" ng-model="franqueado.telFrq" required /> 
+		<div class="input-field col s6">
+			<i class="material-icons prefix">phone</i>
+			<input id="icon_telephone" class="validate" type="tel" name="numTel" ng-maxlength="10" ng-minlength="10" ng-model="franqueado.telFrq" required /> 
+			<label for="icon_telephone">Telefone</label> 
 			<span ng-show="frmFranqueado.numTel.$error.required && frmFranqueado.numTel.$dirty">Telefone Obrigatório!</span> 
 			<span ng-show="frmFranqueado.numTel.$error.minlength">Número de telefone muito pequeno!</span>
 			<span ng-show="frmFranqueado.numTel.$error.maxlength">Número de telefone muito grande!</span>
 		</div>
-		<div>
-			<label>Celular:</label> <input type="tel" name="numCel" ng-minlength="10" ng-maxlength="11" ng-model="franqueado.celFrq"required /> 
+	</div>
+	<div class="row">
+		<div class="input-field col s6">
+			<i class="material-icons prefix">stay_current_portrait</i>
+			<input id="icon_stay_current_portrait" class="validate" type="tel" name="numCel" ng-minlength="10" ng-maxlength="11" ng-model="franqueado.celFrq"required /> 
+			<label for="icon_stay_current_portrait">Celular</label> 
 			<span ng-show="frmFranqueado.numCel.$error.required && frmFranqueado.numCel.$dirty">Celular Obrigatório</span> 
 			<span ng-show="frmFranqueado.numCel.$error.minlength">Número de celular muito pequeno!</span> 
 			<span ng-show="frmFranqueado.numCel.$error.maxlength">Número de celular muito grande!</span>
 		</div>
-		<div>
-			<label>Email:</label> <input type="email" name="email" ng-maxlength="20" ng-model="franqueado.emailFrq" required /> 
+		<div class="input-field col s6">
+			<i class="material-icons prefix">email</i>
+			<input id="icon_email" class="validate" type="email" name="email" ng-maxlength="20" ng-model="franqueado.emailFrq" required />
+			<label for="icon_email">Email</label>  
 			<span ng-show="frmFranqueado.email.$error.required && frmFranqueado.email.$dirty">Email Obrigatório</span>
-			
 			<span ng-show="frmFranqueado.email.$error.email">Email Inválido!</span>
 		</div>
-		<div>
-			<label>Data de Cadastro:</label> <input type="date" name="dtCad" ng-minlength="8" ng-model="franqueado.dataCadFrq" required /> 
-			<span ng-show="frmFranqueado.dtCad.$error.required && frmFranqueado.dtCad.$dirty">Data de Cadastro Obrigatória!</span> 
-			<span ng-show="frmFranqueado.dtCad.$error.minlength">Data muito pequena!</span>
-
-		</div>
-		<div>
-			<label>Endereço:</label> 
-			<label>Rua:</label> <input type="text"name="txtRua" ng-maxlength="50" ng-model="franqueado.endereco.rua" required /> 
+	</div>	
+	<div class="row">
+ 		<div class="input-field col s6"> 
+ 			<i class="material-icons prefix">perm_contact_calendar</i>
+ 			<input id="icon_perm_contact_calendar" class="validate" type="text" name="dtCad" ng-minlength="8" ng-model="franqueado.dataCadFrq" required />
+ 			<label for="icon_perm_contact_calendar">Data de Cadastro</label>   
+ 			<span ng-show="frmFranqueado.dtCad.$error.required && frmFranqueado.dtCad.$dirty">Data de Cadastro Obrigatória!</span>  
+ 			<span ng-show="frmFranqueado.dtCad.$error.minlength">Data muito pequena!</span> 
+ 		</div> 
+ 
+		<div class="input-field col s6">
+			<i class="material-icons prefix">my_location</i>
+			<input id="icon_my_location" class=validate type="text"name="txtRua" ng-maxlength="50" ng-model="franqueado.endereco.rua" required />
+			<label for="icon_my_location">Endereço</label>  
 			<span ng-show="frmFranqueado.txtRua.$error.required && frmFranqueado.txtRua.$dirty">Nome de rua Obrigatória!</span> 
 			<span ng-show="frmFranqueado.txtRua.$error.maxlength">Nome de rua muito grande!</span>
-
 		</div>
-		<div>
-			<label>Número:</label> <input type="number" name="numEstb"ng-maxlength="5" ng-model="franqueado.endereco.numero" required />
+	</div>
+	<div class="row">	
+		<div class="input-field col s6">
+			<i class="material-icons prefix">toc</i>
+			<input id="icon_toc" class="validate" type="text" name="numEstb"ng-maxlength="5" ng-model="franqueado.endereco.numero" required />
+			<label for="icon_toc">Número</label> 
 			<span ng-show="frmFranqueado.numEstb.$error.required && frmFranqueado.numEstb.$dirty">Número Obrigatório!</span> 
 			<span ng-show="frmFranqueado.numEstb.$error.maxlength">Número muito Grande!</span>
-
 		</div>
-		<div>
-			<label>Cidade:</label> <input type="text" name="txtCid"ng-maxlength="15" ng-model="franqueado.endereco.cidade" required />
+		<div class="input-field col s6">
+			<i class="material-icons prefix">location_on</i>
+			<input id="icon_location_on" class="validate" type="text" name="txtCid"ng-maxlength="15" ng-model="franqueado.endereco.cidade" required />
+			<label for="icon_location_on">Cidade</label> 
 			<span ng-show="frmFranqueado.txtCid.$error.required && frmFranqueado.txtCid.$dirty">Cidade Obrigatória!</span> 
 			<span ng-show="frmFranqueado.txtCid.$error.maxlength">Nome de cidade muito grande!</span>
-
 		</div>
-		<div>
-			<label>Bairro:</label> <input type="text" name="txtBairro" ng-maxlength="15" ng-model="franqueado.endereco.bairro" required />
+	</div>	
+	<div class="row">
+		<div class="input-field col s6">
+			<i class="material-icons prefix">trending_down</i>
+			<input id="icon_trending_down" class="validate" type="text" name="txtBairro" ng-maxlength="15" ng-model="franqueado.endereco.bairro" required />
+			<label for="icon_trending_down">Bairro</label> 
 			<span ng-show="frmFranqueado.txtBairro.$error.required && frmFranqueado.txtBairro.$dirty">Bairro Obrigatório!</span> 
 			<span ng-show="frmFranqueado.txtBairro.$error.maxlength">Nome de Bairro muito grande!</span>
-
 		</div>
-		<div>
-			<label>Estado:</label> <input type="text" name="txtEst"ng-minlength="2" ng-maxlength="2" ng-model="franqueado.endereco.uf"required /> 
-				<span ng-show="frmFranqueado.txtEst.$error.required && frmFranqueado.txtEst.$dirty">Estado Obrigatório!</span> 
-				<span ng-show="frmFranqueado.txtEst.$error.minlength">Muito Pequeno!</span> 
-				<span ng-show="frmFranqueado.txtEst.$error.maxlength">Muito Grande! Apenas 2 letras.</span>
+		<div class="input-field col s6">
+			<i class="material-icons prefix">sort_by_alpha</i>
+			<input id="icon_sort_by_alpha" class="validate" type="text" name="txtEst"ng-minlength="2" ng-maxlength="2" ng-model="franqueado.endereco.uf"required /> 
+			<label for="icon_sort_by_alpha">Estado</label> 
+			<span ng-show="frmFranqueado.txtEst.$error.required && frmFranqueado.txtEst.$dirty">Estado Obrigatório!</span> 
+			<span ng-show="frmFranqueado.txtEst.$error.minlength">Muito Pequeno!</span> 
+			<span ng-show="frmFranqueado.txtEst.$error.maxlength">Muito Grande! Apenas 2 letras.</span>
 		</div>
-		<div>
-			<label>Cep:</label> <input type="number" name="numCep"
-				ng-minlength="8" ng-maxlength="8" ng-model="franqueado.endereco.cep"
-				required /> <span
-				ng-show="frmFranqueado.numCep.$error.required && frmFranqueado.numCep.$dirty">Cep
-				Obrigatório!</span> <span ng-show="frmFranqueado.numCep.$error.minlength">Muito
-				Pequeno!</span> <span ng-show="frmFranqueado.numCep.$error.maxlength">Muito
+	</div>
+	<div class="row">	
+		<div class="input-field col s6">
+			<i class="material-icons prefix">view_list</i>
+			<input id="icon_view_list" class="validate" type="text" name="numCep" ng-minlength="8" ng-maxlength="8" ng-model="franqueado.endereco.cep" required />
+			<label for="icon_view_list">Cep</label> 
+			 <span ng-show="frmFranqueado.numCep.$error.required && frmFranqueado.numCep.$dirty">Cep
+				Obrigatório!</span> 
+			<span ng-show="frmFranqueado.numCep.$error.minlength">Muito
+				Pequeno!</span> 
+			<span ng-show="frmFranqueado.numCep.$error.maxlength">Muito
 				Grande! </span>
 		</div>
-		<div>
-			<label>Login:</label> <input type="text" name="txtLogin" ng-minlength="6" ng-maxlength="10" ng-model="franqueado.usuario.login" required />
+		<div class="input-field col s6">
+			<i class="material-icons prefix">perm_identity</i>
+			<input id="icon_perm_identity" class="validate" type="text" name="txtLogin" ng-minlength="6" ng-maxlength="10" ng-model="franqueado.usuario.login" required />
+			<label for="icon_perm-identity">Login</label> 
 			<span ng-show="frmUsuario.txtLogin.$error.required && frmUsuario.txtLogin.$dirty">Login Obrigatorio</span>
+			<span ng-show="frmUsuario.txtLogin.$error.minlength">Login muito pequeno<span>
+			<span ng-show="frmUsuario.txtLogin.$error.maxlength">Login muito grande<span>
 		</div>
-		<div>
-			<label>Senha:</label> <input type="password" name="passSenha" ng-minlength="8" ng-maxlength="20" ng-model="franqueado.usuario.senha" required />
+	</div>	
+	<div class="row">
+		<div class="input-field col s6">
+			<i class="material-icons prefix">lock_outline</i>
+			<input id="icon_lock_outline" class="validate"type="password" name="passSenha" ng-minlength="8" ng-maxlength="20" ng-model="franqueado.usuario.senha" required />
+			<label for="icon_lock_outline">Senha</label> 
 			<span ng-show="frmUsuario.passSenha.$error.required && frmUsuario.passSenha.$dirty">Senha Obrigatória</span> 
 			<span ng-show="frmUsuario.passSenha.$error.minlength">Senha pequena!</span>
+			<span ng-show="frmUsuario.passSenha.$error.maxlength">Senha muito grande!</span>
 		</div>
-		<div>
+		<div class="input-field col s12">
+		 	<select multiple ng-model="franqueado.perfil.id" ng-controller="perfilController">
+	      		<option value="" disabled selected>Escolha uma opção:</option>
+	      		<option ng-repeat="e in perfis" ng-value="e.id"> {{e.descricao}} </option>
+    		</select>
+    		<label>Perfil</label>
+    
+  		</div>
+  	</div>
+<!-- 		<div>
 		<label>Perfil:</label> 
 			<select ng-model="franqueado.perfil.id"ng-controller="perfilController">
 				<option ng-repeat="e in perfis" ng-value="e.id"> {{e.descricao}}</option>
 			</select>
-		</div>
-		<input type="button" value="Salvar"  ng-click="salvarFranqueado()"  />
-		<input type="button" value="Limpar"  ng-click="cancelar()" ng-disabled= "frmFranqueado.$invalid" />
+		</div> -->
+	
+	<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large medium-sea-green">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating medium-sea-green" ng-click="salvarFranqueado()">Salvar<i class="material-icons">Submit</i></a></li>
+      <li><a class="btn-floating medium-sea-green" ng-click="cancelar()" ng-disabled="frmFranqueado.$invalid"> Limpar<i class="material-icons">Clear</i></a></li>
+      
+      </div>
+		
+   
+<!-- 		 <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="salvarFranqueado()">Salvar -->
+<!--    		 <i class="material-icons center">send</i> </button> -->
+<!--    		 <button class="btn waves-effect waves-light" type="cancel" name="action" ng-click="cancelar()" ng-disabled= "frmFranqueado.$invalid" >Limpar -->
+<!--    		 <i class="material-icons center">cancel</i> </button> -->
+   		 
+<!-- 		<input type="button" value="Salvar"  ng-click="salvarFranqueado()"  /> -->
+<!-- 		<input type="button" value="Limpar"  ng-click="cancelar()" ng-disabled= "frmFranqueado.$invalid" /> -->
+	
 		<div ng-repeat="frq in franqueados">
-		{{frq.id + '-'+ frq.nome}} <input type="button" value="excluir"
-			ng-click="excluirFranqueado(frq)" /> <input type="button"
-			value="Alterar" ng-click="preparaAlterar(frq)" /> 
+			<br> {{frq.idFrq + '-'+ frq.nomeFrq }} 
+			<button class="btn waves-effect waves-light" type="delete" name="action" ng-click="excluirFranqueado(frq)">Excluir
+   		 	<i class="material-icons center">delete</i> </button> 
+   		 	<button class="btn waves-effect waves-light" type="push" name="action" ng-click="preparaAlterar(frq)">Alterar
+   			<i class="material-icons center">push</i> </button>
 			<a href="franqueados/{{frq.id}}">Detalhes dos Franqueados</a>
 
-	</div>
-
+		</div>
+	
+	
 
 	</form>
 

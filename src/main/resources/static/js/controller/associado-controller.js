@@ -3,15 +3,15 @@ appUsuario.controller("associadoController", function($http, $scope){
 	$scope.associados=[];
 	
 	var mostrarTodos= function(){
-		http.get("/associados").then (function(response){
-			$scope.associado=response.data;
+		$http.get("/associados").then (function(response){
+			$scope.associados=response.data;
 			}, function(response){	
 				window.alert("Erro!!");
 			});	
 	};
 	
 	$scope.salvarAssociado = function() {
-		if ($scope.associado.id != null) {
+		if ($scope.associado.id == undefined) {
 			$scope.cadastrarAssociado();
 		} else {
 			$scope.alterarAssociado();
@@ -21,7 +21,7 @@ appUsuario.controller("associadoController", function($http, $scope){
 
 	$scope.cadastrarAssociado = function() {
 		if ($scope.frmAssociado.$valid) {
-			http.post("/associados", $scope.associado).then(function(response) {
+			$http.post("/associados", $scope.associado).then(function(response) {
 				window.alert("Cadastrado com Sucesso!");
 				mostrarTodos();
 				$scope.cancelar();
@@ -34,12 +34,12 @@ appUsuario.controller("associadoController", function($http, $scope){
 	};
 
 	$scope.prepararAlterar = function(a) {
-		$scope.associado = copy(a);
+		$scope.associado = angular.copy(a);
 
 	};
 
 	$scope.alterarAssociado = function() {
-		http.put("/associados").then(function(response) {
+		$http.put("/associados").then(function(response) {
 			window.alert("Alterado com sucesso!");
 			mostrarTodos();
 			$scope.cancelar();
@@ -49,7 +49,7 @@ appUsuario.controller("associadoController", function($http, $scope){
 	};
 	$scope.excluirAssociado= function(){
 		 if(window.confirm("Tem certeza que deseja excluir?")){
-			http.delete("/associados/"+id ).then (function(){
+			$http.delete("/associados/"+id ).then (function(){
 				window.alert("Excluído com sucesso!");
 				mostrarTodos();
 				$scope.cancelar();

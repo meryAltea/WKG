@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Data;
 
@@ -26,7 +28,8 @@ public class Franqueado {
 	private Usuario usuario = new Usuario();
 	@Column(nullable=false, unique=true, length=30)
 	private String nomeFrq;
-	@Column(nullable=false, length=8)
+	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	private Date dataNascFrq;
 	@Column(nullable=false, unique=true, length=14)
 	private String cnpjFrq;
@@ -36,7 +39,8 @@ public class Franqueado {
 	private String celFrq;
 	@Column(nullable=false, length=20)
 	private String emailFrq;
-	@Column(nullable=false, length=8)
+	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	private Date dataCadFrq;
 	
 

@@ -1,6 +1,6 @@
 appUsuario.controller("atendenteController", function($http, $scope) {
 	$scope.atendente = {};
-	$scope.atendente = [];
+	$scope.atendentes = [];
 
 	var mostrarTodos = function() {
 		$http.get("/atendentes").then(function(response) {
@@ -10,16 +10,16 @@ appUsuario.controller("atendenteController", function($http, $scope) {
 		});
 	};
 
-	$scope.salvarAtentende = function() {
-		if ($scope.atendente.id != null) {
-			$scope.cadastrarAtendente();
+	$scope.salvarAtendente = function() {
+		if ($scope.atendente.id == undefined) {
+			cadastrarAtendente();
 		} else {
-			$scope.alterarAtendente();
+			alterarAtendente();
 		}
 
 	};
 
-	$scope.cadastrarAtendente = function() {
+	cadastrarAtendente = function() {
 		if ($scope.frmAtendente.$valid) {
 			$http.post("/atendentes", $scope.atendente).then(function(response) {
 				window.alert("Cadastrado com Sucesso!");
@@ -34,11 +34,11 @@ appUsuario.controller("atendenteController", function($http, $scope) {
 	};
 
 	$scope.prepararAlterar = function(a) {
-		$scope.atendente = copy(a);
+		$scope.atendente = angular.copy(a);
 
 	};
 
-	$scope.alterarAtendente = function() {
+	alterarAtendente = function() {
 		$http.put("/atendentes").then(function(response) {
 			window.alert("Alterado com sucesso!");
 			mostrarTodos();

@@ -1,7 +1,8 @@
 appUsuario.controller("franqueadoController", function($http, $scope) {
 	$scope.franqueado = {};
 	$scope.franqueados = [];
-	$scope.teste=false;
+	$scope.dataTeste= "2016-01-01";
+
 
 	var mostrarTodos = function() {
 		$http.get("/franqueados").then(function(response) {
@@ -13,10 +14,11 @@ appUsuario.controller("franqueadoController", function($http, $scope) {
 
 	};
 	$scope.salvarFranqueado= function(){
-		if($scope.franqueado.id!=null){
-			alterarFranqueado();
-		} else {
+		if($scope.franqueado.id==undefined){
 			cadastrarFranqueado();
+			
+		} else {
+			alterarFranqueado();
 		}
 		
 	};
@@ -36,7 +38,7 @@ appUsuario.controller("franqueadoController", function($http, $scope) {
 	};
 
 	$scope.preparaAlterar = function(f) {
-		$scope.franqueado = copy(f);
+		$scope.franqueado = angular.copy(f);
 
 	};
 
