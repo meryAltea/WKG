@@ -1,3 +1,7 @@
+<head>
+<meta charset="UTF-8" />
+
+</head>
 <style>
 	fieldset{
 		display:inline;
@@ -6,7 +10,7 @@
 <div class="row">
 	<form class="col s12" novalidate name="frmPerfil">
 		<div class="row">
-        	<div class="input-field col s6">
+        	<div class="input-field col s4 offset-s4">
         		<i class="material-icons prefix">account_box</i>
 				<input id="icon_prefix" class="validate" type="text" name="txtDescricao" ng-model="perfil.descricao"/>
 				<label for="icon_prefix"> Tipo de Perfil</label>
@@ -16,15 +20,27 @@
 			<button class="btn waves-effect waves-light" type="submit" name="action" ng-click="salvarPerfil()">Salvar
    		 	<i class="material-icons right">send</i> </button>
    		 
+   		 <div class="row">
+			<h4>Perfis Cadastrados</h4>
+			<div class="col s4  offset-s4" >
+				
+				<div ng-repeat="p in perfis" >
+					
+					<ul class="collection" >
+					<li class="collection-item "><div> {{p.id}} {{p.descricao}} <a href="#!" class="secondary-content"  ng-click="excluirPerfil(p)"><i class="material-icons">delete</i></a> <a href="#!" class="secondary-content"  ng-click="preparaAlterar(p)"><i class="material-icons">edit</i></a></div></li>
+					</ul>
 		
-		<div ng-repeat="e in perfis">
-			<br>{{e.id}} {{e.descricao}} 
-			<button class="btn waves-effect waves-light" type="delete" name="action" ng-click="excluirPerfil(e)">Excluir
-   		 	<i class="material-icons center">send</i> </button>
-   		 	<button class="btn waves-effect waves-light" type="push" name="action" ng-click="preparaAlterar(e)">Alterar
-   		 	<i class="material-icons center">push</i> </button>
+<!-- 		<div ng-repeat="e in perfis"> -->
+<!-- 			<br>{{e.id}} {{e.descricao}}  -->
+<!-- 			<button class="btn waves-effect waves-light" type="delete" name="action" ng-click="excluirPerfil(e)">Excluir -->
+<!--    		 	<i class="material-icons center">send</i> </button> -->
+<!--    		 	<button class="btn waves-effect waves-light" type="push" name="action" ng-click="preparaAlterar(e)">Alterar -->
+<!--    		 	<i class="material-icons center">push</i> </button> -->
 
+			</div>
 		</div>
+	</div>		
+		
 	</form>
 
 </div>

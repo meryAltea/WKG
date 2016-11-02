@@ -5,7 +5,7 @@ appUsuario.controller("franqueadoController", function($http, $scope) {
 
 
 	var mostrarTodos = function() {
-		$http.get("/franqueados").then(function(response) {
+		$http.get("/admin/franqueados").then(function(response) {
 			$scope.franqueados = response.data;
 
 		}, function(response) {
@@ -25,10 +25,11 @@ appUsuario.controller("franqueadoController", function($http, $scope) {
 
 	cadastrarFranqueado = function() {
 		if ($scope.frmFranqueado.$valid) {
-			$http.post("/franqueados", $scope.franqueado).then(function(response) {
+			$http.post("/admin/franqueados", $scope.franqueado).then(function(response) {
 
 				window.alert("Franqueado cadastrados com sucesso!!");
 				$scope.cancelar();
+				 mostrarTodos();
 			}, function(response) {
 				window.alert("Erro ao cadastrar o franqueado!");
 			});
@@ -43,7 +44,7 @@ appUsuario.controller("franqueadoController", function($http, $scope) {
 	};
 
 	alterarFranqueado = function() {
-		$http.put("/franqueados").then(function(response) {
+		$http.put("/admin/franqueados").then(function(response) {
 			window.alert("Alterado com sucesso!");
 			mostrarTodos();
 			$scope.cancelar();
@@ -51,9 +52,9 @@ appUsuario.controller("franqueadoController", function($http, $scope) {
 			window.alert("Não foi possível alterar o franqueado!")
 		});
 	};
-	$scope.excluirFranqueado= function(){
+	$scope.excluirFranqueado= function(id){
 		 if(window.confirm("Tem certeza que deseja excluir?")){
-			$http.delete("/franqueados/"+id ).then (function(){
+			$http.delete("/admin/franqueados/"+id ).then (function(){
 				window.alert("Excluído com sucesso!");
 				mostrarTodos();
 				$scope.cancelar();

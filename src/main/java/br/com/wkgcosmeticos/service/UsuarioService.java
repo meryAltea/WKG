@@ -11,10 +11,15 @@ import br.com.wkgcosmeticos.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 	@Autowired
-	UsuarioRepository usuarioRepository;
+	private UsuarioRepository usuarioRepository;
 
 	public Usuario cadastrar(Usuario usuario) {
 		return usuarioRepository.save(usuario);
+	}
+	
+	public Usuario buscarPorUsername(String login){
+		
+		return usuarioRepository.buscarPorUsername(login);
 	}
 
 	public Usuario alterar(Usuario atendente) {

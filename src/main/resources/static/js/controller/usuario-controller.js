@@ -3,7 +3,10 @@ appUsuario.controller("usuarioController", function($scope, $http) {
 	$scope.usuarios=[];
 	
 	var mostrarTodos=function(){
-		$http.get("/usuarios").then (function(response){
+		token=localStorage.getItem("userToken");
+		
+		//$http.defaults.headers.common.Authorization = 'Bearer'+ token;
+		$http.get("/admin/usuarios").then (function(response){
 			$scope.usuarios=response.data;	
 		}, function(response){
 			window.alert("Erro");
@@ -20,7 +23,7 @@ appUsuario.controller("usuarioController", function($scope, $http) {
 	};
 	var cadastrarUsuario = function() {
 		if ($scope.frmUsuario.$valid){
-			$http.post("/usuarios", $scope.usuario).then(function(response) {
+			$http.post("/admin/usuarios", $scope.usuario).then(function(response) {
 				mostrarTodos();
 				$scope.cancelar();
 				$scope.frmUsuario.$setPristine(true);
@@ -33,8 +36,8 @@ appUsuario.controller("usuarioController", function($scope, $http) {
 		}
 	};
 	var alterarUsuario = function() {
-		$http.put("/usuarios", $scope.usuario).then(function(response) {
-		
+		$http.put("/admin/usuarios", $scope.usuario).then(function(response) {
+		$scope.cancelar();
 		mostrarTodos();
 		}, function(response) {
 			window.alert("Erro");
@@ -47,14 +50,16 @@ appUsuario.controller("usuarioController", function($scope, $http) {
 		
 		
 	};
-	$scope.excluirUsuario= function(){
-		$http.delete("/usuarios/"+id).then(function(response){
+	$scope.excluirUsuario= function(id){
+		if(window.confirm("Tem certeza que deseja excluir?")){
+		$http.delete("/admin/usuarios/"+id).then(function(response){
 			mostrarTodos();
-			
+			$scope.cancelar();
 		}, function(response){
 			console.log(response.data);
 			console.log(response.status);
 		});
+		}
 	};	
 	$scope.cancelar= function(){
 		$scope.usuario={};

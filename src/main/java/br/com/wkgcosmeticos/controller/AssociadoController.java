@@ -14,6 +14,7 @@ import br.com.wkgcosmeticos.entidades.Associado;
 import br.com.wkgcosmeticos.service.AssociadoService;
 
 @RestController
+@RequestMapping(value="/admin")
 public class AssociadoController {
 	@Autowired
 	AssociadoService associadoService;

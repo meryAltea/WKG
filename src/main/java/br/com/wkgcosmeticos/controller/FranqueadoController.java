@@ -14,6 +14,7 @@ import br.com.wkgcosmeticos.entidades.Franqueado;
 import br.com.wkgcosmeticos.service.FranqueadoService;
 
 @RestController
+@RequestMapping(value="/admin")
 public class FranqueadoController {
 	@Autowired
 	FranqueadoService franqueadoService;

@@ -47,7 +47,7 @@ appUsuario.controller("atendenteController", function($http, $scope) {
 			window.alert("Erro ao alterar!")
 		});
 	};
-	$scope.excluirAtendente= function(){
+	$scope.excluirAtendente= function(id){
 		 if(window.confirm("Tem certeza que deseja excluir?")){
 			$http.delete("/atendentes/"+id ).then (function(){
 				window.alert("Excluído com sucesso!");

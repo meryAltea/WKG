@@ -15,6 +15,7 @@ import br.com.wkgcosmeticos.repository.PerfilRepository;
 import br.com.wkgcosmeticos.service.PerfilService;
 
 @RestController
+@RequestMapping(value="/admin")
 public class PerfilController {
 	@Autowired
 	PerfilService perfilService;

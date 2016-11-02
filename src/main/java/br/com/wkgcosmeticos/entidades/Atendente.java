@@ -18,9 +18,7 @@ import lombok.Data;
 @Data
 @Entity
 public class Atendente {
-	@JoinColumn
-	@ManyToOne (cascade=CascadeType.ALL)
-	private Usuario usuario= new Usuario();
+	
 	@Embedded
 	private Endereco endereco;
 	@Id
@@ -28,6 +26,9 @@ public class Atendente {
 	private Integer idAtend;
 	@Column(nullable = false, unique = true, length = 30)
 	private String nomeAtend;
+	@JoinColumn
+	@ManyToOne (cascade=CascadeType.ALL)
+	private Usuario usuario= new Usuario();
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Date dataNascAtend;

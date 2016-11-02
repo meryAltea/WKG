@@ -3,7 +3,8 @@ appUsuario.controller("perfilController", function($scope, $http) {
 	$scope.perfis=[];
 	
 	 var mostrarTodos=function(){
-		$http.get("perfis").then (function(response){
+		 token=localStorage.getItem("userToken");
+		$http.get("/admin/perfis").then (function(response){
 			$scope.perfis=response.data;	
 		}, function(response){
 			window.alert("Erro");
@@ -11,7 +12,7 @@ appUsuario.controller("perfilController", function($scope, $http) {
 	};
 
 	$scope.salvarPerfil = function() {
-		$http.post("perfis", $scope.perfil).then(function(response) {
+		$http.post("/admin/perfis", $scope.perfil).then(function(response) {
 			mostrarTodos();
 			$scope.cancelar();
 			$scope.frmPerfil.$setPristine(true);
@@ -21,7 +22,7 @@ appUsuario.controller("perfilController", function($scope, $http) {
 		});
 	};
 	$scope.alterarPerfil = function() {
-		$http.put("perfis", $scope.perfis).then(function(response) {
+		$http.put("/admin/perfis", $scope.perfis).then(function(response) {
 			mostrarTodos();
 			$scope.cancelar();
 		}, function(response) {
@@ -35,7 +36,7 @@ appUsuario.controller("perfilController", function($scope, $http) {
 		$scope.alterarPerfil();
 	};
 	$scope.excluirPerfil= function(p){
-		$http.delete("perfis/"+id).then(function(response){
+		$http.delete("/admin/perfis/"+id).then(function(response){
 			$scope.mostrarTodos();
 			
 		}, function(response){
