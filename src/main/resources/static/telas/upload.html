@@ -1,0 +1,38 @@
+<div>
+	    <div class="col-xs-6 col-xs-offset-3">
+        <div class="well">
+            <form action="" class="dropzone" dropzone="" id="dropzone">
+                <div class="dz-default dz-message">
+                </div>
+                <input type="hidden" name="produtoId" ng-value="produtoId"/>
+            </form>
+        </div>
+        <div class="pull-right">
+            <button class="btn btn-success" ng-click="uploadFile()">Upload File</button>
+            <button class="btn btn-danger" ng-click="reset()">Reset Dropzone</button>
+        </div>
+        <div>
+            <form>
+                <label>File to download</label>
+                <input ng-model="fileName" type="text" placeholder="Filename" />
+                <a class="btn btn-primary" ng-href="{{ partialDownloadLink + fileName }}">Download File</a>
+            </form>
+        </div>
+        <div class="row">
+			<h4>Imagens Cadastradas</h4>
+			<div class="section col s4  offset-s4">
+
+				<div ng-repeat="img in imagens">
+
+					<ul class="collection">
+						<li class="collection-item "><div>
+								{{img.id + '-'+ img.fileName}} <img ng-src="data:image/JPEG;base64,{{img.file}}" width="50"/><a href="#!"
+									class="secondary-content" ng-click="excluirImagem(img.id)">
+									<i class="material-icons">delete</i>
+								</a> 
+							</div></li>
+					</ul>
+    </div>
+
+
+</div>

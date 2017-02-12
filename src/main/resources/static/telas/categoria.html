@@ -1,0 +1,40 @@
+<head>
+<meta charset="UTF-8" />
+
+</head>
+<style>
+	fieldset{
+		display:inline;
+	}
+</style>
+<div class="row">
+	<form class="col s12" novalidate name="frmCategoria">
+		<div class="row">
+        	<div class="input-field col s4 offset-s4">
+        		<i class="material-icons prefix">account_box</i>
+				<input id="icon_prefix" class="validate" type="text" name="txtDescricao" ng-model="categoria.descricao"/>
+				<label for="icon_prefix"> Tipo de Categoria</label>
+			</div>
+		</div>	
+		 
+			<button class="btn waves-effect waves-light" type="submit" name="action" ng-click="salvarCategoria()">Salvar
+   		 	<i class="material-icons right">send</i> </button>
+   		 
+   		 <div class="row">
+			<h4>Categorias Cadastradas</h4>
+			<div class="col s4  offset-s4" >
+				
+				<div ng-repeat="p in categorias" >
+					
+					<ul class="collection" >
+					<li class="collection-item "><div> {{p.id}} {{p.descricao}} <a href="#!" class="secondary-content"  ng-click="excluirCategoria(p)"><i class="material-icons">delete</i></a> <a href="#!" class="secondary-content"  ng-click="preparaAlterar(p)"><i class="material-icons">edit</i></a></div></li>
+					</ul>
+
+
+			</div>
+		</div>
+	</div>		
+		
+	</form>
+
+</div>

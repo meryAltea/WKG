@@ -1,0 +1,21 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col s12">
+			<div class="col s4 m4 l4" ng-repeat="prod in produtos"
+				ng-value="produtoId"
+				style="border-right: 1px solid #e0e0e0; display: block;">
+				<a href="/detalhes/{{prod.id}}"><img
+					ng-src="data:image/JPEG;base64,{{prod.fotos[0].file}}" width="150" /><br>
+					{{prod.nome}} <br>{{"R$"+ prod.preco}}</a>
+				<div ng-controller="carrinhoController">
+					<a class="btn-floating btn-medium waves-effect waves-light teal"><i
+						class="material-icons" ng-click="adicionarItemAoCarrinho(prod)">add_shopping_cart</i></a></div>
+				
+			</div>
+
+
+
+		</div>
+	</div>
+</div>

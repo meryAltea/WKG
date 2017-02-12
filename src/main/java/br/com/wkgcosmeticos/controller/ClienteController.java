@@ -10,37 +10,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.wkgcosmeticos.entidades.Atendente;
+import br.com.wkgcosmeticos.entidades.Cliente;
 
-import br.com.wkgcosmeticos.service.AtendenteService;
+import br.com.wkgcosmeticos.service.ClienteService;
 
 @RestController
-public class AtendenteController {
+public class ClienteController {
 	@Autowired
-	AtendenteService atendenteService;
+	ClienteService clienteService;
 
-	@RequestMapping(value = "/atendentes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Atendente cadastrar(@RequestBody Atendente atendente) {
-		return atendenteService.cadastrar(atendente);
+	@RequestMapping(value = "/clientes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Cliente cadastrar(@RequestBody Cliente cliente) {
+		return clienteService.cadastrar(cliente);
 	}
 
-	@RequestMapping(value = "/atendentes", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Atendente alterar(@RequestBody Atendente atendente) {
-		return atendenteService.alterar(atendente);
+	@RequestMapping(value = "/clientes", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Cliente alterar(@RequestBody Cliente cliente) {
+		return clienteService.alterar(cliente);
 	}
 
-	@RequestMapping(value = "/atendentes/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/clientes/{id}", method = RequestMethod.DELETE)
 	public void excluir(@PathVariable Integer id) {
-		atendenteService.excluir(id);
+		clienteService.excluir(id);
 	}
 
-	@RequestMapping(value = "/atendentes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Collection<Atendente> buscarTodos() {
-		return atendenteService.buscarTodos();
+	@RequestMapping(value = "/clientes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Collection<Cliente> buscarTodos() {
+		return clienteService.buscarTodos();
 	}
 
-	@RequestMapping(value = "/atendentes/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Atendente buscarPorId(@PathVariable Integer id) {
-		return atendenteService.buscarPorId(id);
+	@RequestMapping(value = "/clientes/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Cliente buscarPorId(@PathVariable Integer id) {
+		return clienteService.buscarPorId(id);
 	}
 }

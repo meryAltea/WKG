@@ -1,0 +1,36 @@
+<head>
+<meta charset="UTF-8" />
+
+</head>
+<style>
+	fieldset{
+		display:inline;
+	}
+
+</style>
+<div class="row">
+	<form class="col s12" >
+		<div class="row">
+			<div class="input-field col s4 offset-s4">
+         		 <input id="last_name" type="text" class="validate" ng-model="login.login">
+          			<label for="last_name">Usuário</label>
+			</div>
+			<div class="input-field col s4 offset-s4">
+         		 <input id="password" type="password" class="validate" ng-model="login.senha"/>
+          			<label for="password">Senha</label>
+			</div>
+		</div>	
+		
+		
+		
+		<button class="btn waves-effect waves-light" type="submit" ng-click="autenticar()" name="action">Entrar
+   		 <i class="material-icons right">send</i> </button>
+		<button class="btn waves-effect waves-light" type="submit"  ng-click="/#/cliente" name="action">Cadastrar
+   		 <i class="material-icons right">send</i> </button>
+		
+
+		
+	</form>
+
+
+</div>

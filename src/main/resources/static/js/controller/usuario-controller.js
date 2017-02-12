@@ -3,9 +3,7 @@ appUsuario.controller("usuarioController", function($scope, $http) {
 	$scope.usuarios=[];
 	
 	var mostrarTodos=function(){
-		token=localStorage.getItem("userToken");
-		
-		//$http.defaults.headers.common.Authorization = 'Bearer'+ token;
+
 		$http.get("/admin/usuarios").then (function(response){
 			$scope.usuarios=response.data;	
 		}, function(response){

@@ -1,10 +1,50 @@
 package br.com.wkgcosmeticos.controller;
 
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
+import br.com.wkgcosmeticos.entidades.Categoria;
+import br.com.wkgcosmeticos.entidades.Produto;
+import br.com.wkgcosmeticos.service.CategoriaService;
+import br.com.wkgcosmeticos.service.ProdutoService;
 
-
-
+@RestController
+@RequestMapping(value="/admin")
 public class ProdutoController {
-
+	@Autowired
+	ProdutoService produtoService;
+	@Autowired
+	CategoriaService categoriaService; 
+	@RequestMapping(value="/produtos", method= RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE )
+ 	public Produto inserir(@RequestBody Produto produto){
+ 		Categoria categoria = categoriaService.buscarPorId(produto.getCategoria().getId());
+ 		produto.setCategoria(categoria);
+		return produtoService.cadastrar(produto);
+ 		
+ 	}
+ 	@RequestMapping(value="/produtos", method=RequestMethod.PUT)
+ 	public Produto alterar(@RequestBody Produto produto){
+ 		return produtoService.cadastrar(produto);
+ 	}
+ 	@RequestMapping(value="/produtos{id}", method=RequestMethod.GET )
+ 	public Produto buscarPorId(@PathVariable("id") Integer id){
+ 		return produtoService.buscarPorId(id);
+ 	}
+ 	@RequestMapping(value="/produtos", method=RequestMethod.GET )
+ 	public List <Produto> buscarTodos(){
+ 		return produtoService.buscarTodos();
+ 	}
+ 	
+ 	
+	@RequestMapping(value = "/produtos/{id}", method= RequestMethod.DELETE)
+	public void excluir(@PathVariable Integer id){
+		produtoService.excluir(id);
+	}
 }

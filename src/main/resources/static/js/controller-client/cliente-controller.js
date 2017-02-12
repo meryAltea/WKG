@@ -1,4 +1,4 @@
-appUsuario.controller("clienteController", function($http, $scope) {
+appWkg.controller("clienteController", function($http, $scope) {
 	$scope.cliente = {};
 	$scope.clientes = [];
 
@@ -47,6 +47,7 @@ appUsuario.controller("clienteController", function($http, $scope) {
 			window.alert("Erro ao alterar!")
 		});
 	};
+	$scope.excluirCliente= function(id){
 		 if(window.confirm("Tem certeza que deseja excluir?")){
 			$http.delete("/clientes/"+id ).then (function(){
 				window.alert("Excluído com sucesso!");

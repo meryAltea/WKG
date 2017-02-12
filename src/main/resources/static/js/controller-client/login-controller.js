@@ -1,4 +1,4 @@
-appUsuario.controller("loginController", function($http, $scope, $rootScope,
+appWkg.controller("loginController", function($http, $scope, $rootScope,
 		$location) {
 
 	$scope.login = {};
@@ -12,7 +12,7 @@ appUsuario.controller("loginController", function($http, $scope, $rootScope,
 			console.log("Sucesso" + response);
 			$scope.token = response.data;
 			localStorage.setItem("userToken", response.data.token);
-			$rootScope.menuLogin = "Logout";
+			$rootScope.menuLogin = "Sair";
 			$location.path('/')
 		}, function(response) {
 			window.alert(response.data.message);

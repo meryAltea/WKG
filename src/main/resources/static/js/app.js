@@ -4,6 +4,7 @@ appUsuario.config(function($routeProvider, $locationProvider){
 
 $routeProvider
 
+
 .when("/usuarios", {
 	templateUrl : 'telas/usuario.html',
 	controller : 'usuarioController'
@@ -13,15 +14,24 @@ $routeProvider
 }).when("/franqueados", {
 	templateUrl : 'telas/franqueado.html',
 	controller : 'franqueadoController'
-}).when("/atendentes", {
-	templateUrl : 'telas/atendente.html',
-	controller : 'atendenteController'
+}).when("/clientes", {
+	templateUrl : 'telas/cliente.html',
+	controller : 'clienteController'
 }).when("/associados", {
 	templateUrl : 'telas/associado.html',
 	controller : 'associadoController'
 }).when("/login", {
 	templateUrl : 'telas/login.html',
 	controller : 'loginController'
+}).when("/produtos", {
+	templateUrl : 'telas/produto.html',
+	controller : 'produtoController'
+}).when("/categorias", {
+	templateUrl : 'telas/categoria.html',
+	controller : 'categoriaController'
+}).when("/upload/:produtoId", {
+	templateUrl : 'telas/upload.html',
+	controller : 'fileController'
 }).otherwise({
 	rediretTo : '/'
 });		

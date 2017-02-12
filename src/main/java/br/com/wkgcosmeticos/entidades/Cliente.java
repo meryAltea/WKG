@@ -17,32 +17,32 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Atendente {
+public class Cliente {
 	
 	@Embedded
 	private Endereco endereco;
 	@Id
 	@GeneratedValue
-	private Integer idAtend;
+	private Integer id;
 	@Column(nullable = false, unique = true, length = 30)
-	private String nomeAtend;
+	private String nome;
 	@JoinColumn
 	@ManyToOne (cascade=CascadeType.ALL)
 	private Usuario usuario= new Usuario();
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
-	private Date dataNascAtend;
+	private Date dataNasc;
 	@Column(nullable = false, unique = true, length = 11)
-	private String cpfAtend;
+	private String cpf;
 	@Column(nullable = false, unique = true, length = 9)
-	private String rgAtend;
+	private String rg;
 	@Column(nullable = false, length = 10)
-	private String telAtend;
+	private String tel;
 	@Column(nullable = false, length = 11)
-	private String celAtend;
+	private String cel;
 	@Column(nullable = false, length = 20)
-	private String emailAtend;
+	private String email;
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
-	private Date dataCadAtend;
+	private Date dataCad;
 }

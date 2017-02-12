@@ -32,7 +32,7 @@
 				<div class="section col s4 offset-s4">
 				<div input-field>	
 					
-			  			<select ng-model= "usuario.perfil.id" ng-controller="perfilController" material-select> 
+			  			<select ng-model= "usuario.perfil.id" ng-controller="perfilController" material-select watch> 
 			    			<option value="" disabled selected>Perfil</option>
 			    			<option ng-repeat="e in perfis" ng-value="e.id"> {{e.descricao}}</option>
 			    			
@@ -57,7 +57,7 @@
 <!-- 		<input type="button" value="Limpar"  ng-click="cancelar()" ng-disabled= "frmUsuario.$invalid" /> -->
 		
 	<div class="row">
-		<h4>Perfis Cadastrados</h4>
+		<h4>Usuários Cadastrados</h4>
 			<div class="col s4  offset-s4" >
 				
 				<div ng-repeat="usu in usuarios" >

@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+	<div class="col s12 teal-text text-accent-4" >{{produtos[produtoId-1].nome}}</div>
+<!-- <div ng-repeat=" in produtos"> -->
+
+	<div class="col s2" ng-repeat="img in produtos[produtoId-1].fotos" style="margin:20px; display:inline-block; padding:-5px;"><img class ="materialboxed" ng-src="data:image/JPEG;base64,{{img.file}}" class="responsive-img" width="100" style="display:inline;"/>
+	</div>
+	<div class="col s6 offset-s6" style="margin:-10px; text-align:right;" ><p class="teal-text"> Referência:{{produtos[produtoId-1].codigo}}</p>
+	<p class="teal-text"> Categoria:{{produtos[produtoId-1].categoria.descricao}}</p>
+	<p class="teal-text"> Linha:{{produtos[produtoId-1].linha}}</p>
+	<p class="teal-text"> Descrição:{{produtos[produtoId-1].descricao}}</p>
+	<p class="teal-text"> {{"R$"+produtos[produtoId-1].preco}}</p>
+	<div class="block" style="display:inline-block;" >
+	<p class="teal-text">Quantidade:<input id="quantidade"  type="text" name="quantidade" ng-model=pedido.quantidade 
+				required style="display:inline-block;"/>
+	
+	<button class="btn waves-effect waves-light" type="submit" ng-click="adicionar()" name="action">Adicionar no Carrinho
+   		 <i class="material-icons right">send</i> </button>
+		
+		
+		</div>
+	</div>
+</div>

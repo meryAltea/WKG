@@ -5,37 +5,37 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.wkgcosmeticos.entidades.Atendente;
+import br.com.wkgcosmeticos.entidades.Cliente;
 import br.com.wkgcosmeticos.entidades.Perfil;
-import br.com.wkgcosmeticos.repository.AtendenteRepository;
+import br.com.wkgcosmeticos.repository.ClienteRepository;
 import br.com.wkgcosmeticos.repository.PerfilRepository;
 
 @Service
-public class AtendenteService {
+public class ClienteService {
 	@Autowired
-	AtendenteRepository atendenteRepository;
+	ClienteRepository clienteRepository;
 	@Autowired
 	PerfilRepository perfilRepository;
 
-	public Atendente cadastrar(Atendente atendente) {
+	public Cliente cadastrar(Cliente cliente) {
 		Perfil perfil= perfilRepository.findOne(2); 
-		atendente.getUsuario().setPerfil(perfil);
-		return atendenteRepository.save(atendente);
+		cliente.getUsuario().setPerfil(perfil);
+		return clienteRepository.save(cliente);
 	}
 
-	public Atendente alterar(Atendente atendente) {
-		return atendenteRepository.save(atendente);
+	public Cliente alterar(Cliente cliente) {
+		return clienteRepository.save(cliente);
 	}
 
 	public void excluir(Integer id) {
-		atendenteRepository.delete(id);
+		clienteRepository.delete(id);
 	}
 
-	public Collection<Atendente> buscarTodos() {
-		return atendenteRepository.findAll();
+	public Collection<Cliente> buscarTodos() {
+		return clienteRepository.findAll();
 	}
 
-	public Atendente buscarPorId(Integer id) {
-		return atendenteRepository.findOne(id);
+	public Cliente buscarPorId(Integer id) {
+		return clienteRepository.findOne(id);
 	}
 }

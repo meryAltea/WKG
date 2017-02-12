@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html ng-app="appWkg">
+<head>
+
+<meta charset="UTF-8" />
+<base href="/" />
+<!-- <base href="/"/> -->
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link type="text/css" rel="stylesheet"
+	href="./bower_components/materialize/dist/css/materialize.css"
+	media="screen,projection" />
+<link type="text/css" rel="stylesheet"
+	href="./bower_components/materialize/dist/css/custom.css" />
+<title>WKG Cosméticos</title>
+<script type="text/javascript"
+	src="./bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript"
+	src="./bower_components/materialize/dist/js/materialize.min.js"></script>
+<script src="./bower_components/angular/angular.min.js"></script>
+<script type="text/javascript"
+	src="./bower_components/angular-materialize/src/angular-materialize.js"></script>
+<script src="./bower_components/angular-route/angular-route.js"></script>
+<script src="./js/app-site.js"></script>
+<script src="./js/controller-client/main-controller.js"></script>
+<script src="./js/controller-client/login-controller.js"></script>
+<script src="./js/controller-client/produto-controller.js"></script>
+<script src="./js/controller-client/detalhes-controller.js"></script>
+<script src="./js/controller-client/cliente-controller.js"></script>
+<script src="./js/controller-client/carrinho-controller.js"></script>
+
+
+
+</head>
+<body ng-controller="mainCtr">
+<div class="navbar-fixed">
+	<nav style="background-color:#00bfa5;">
+		<div class="nav-wrapper" style="text-align:right;">
+			<a class="btn-floating btn-medium waves-effect waves-light teal" href="/carrinho"><i class="material-icons" >shopping_cart</i></a>
+			
+			<a href="/login">Entrar</a>
+
+		</div>
+	</nav>
+	</div>
+<!-- 		<div class="card-panel teal accent-4" style="text-align:right;"> -->
+<!-- 		<li><a href="/login" >Entrar</a></li> -->
+<!-- 		</div> -->
+	<div class="navbar-fixed">
+		<ul id="dropdown1" class="dropdown-content">
+			<li><a href="/escovista">Escovista Profissional</a></li>
+			<li class="divider"></li>
+			<li><a href="/fiosdeprata">Fios de prata</a></li>
+			<li class="divider"></li>
+			<li><a href="#!">three</a></li>
+		</ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo right">Wkg Cosméticos </a> <a href="#"
+					data-activates="mobile-demo" class="button-collapse"><i
+					class="material-icons">menu</i></a>
+
+				<ul id="nav-mobile" class="left hide-on-med-and-down">
+					<li><a href="/">Home</a></li>
+					<li><a href="/empresa">Quem somos</a></li>
+					<li><a href="/produtos">Loja Online</a></li>
+					<li><a class="dropdown-button " href="#!"
+						data-activates="dropdown1" data-hover="true">Cursos</a><i
+						class="mdi-navigation-arrow-drop-down right"></i></li>
+					<li><a href="/trabalheconosco">Trabalhe Conosco</a></li>
+					<li><a href="/contato">Contato</a></li>
+				</ul>
+
+				<ul class="side-nav" id="mobile-demo">
+					<li><a href="/">Home</a></li>
+					<li><a href="/produtos">Produtos</a></li>
+					<li><a href="collapsible.html">Javascript</a></li>
+					<li><a href="mobile.html">Mobile</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<!-- 	<div class="container"> -->
+	<!-- 		<div class="row"> -->
+	<!-- 			<div class="col s12"> -->
+	<!-- 				<ul class="tabs"> -->
+	<!-- 					<li class="tab col s2"><a class="active" href="/#/">Home</a></li> -->
+	<!-- 					<li class="tab col s2"><a class="active" target="_self" -->
+	<!-- 						href="/#/empresa">Quem Somos</a></li> -->
+	<!-- 					<li class="tab col s2"><a class="active"  -->
+	<!-- 						href="/#/produtos">Loja Online</a></li> -->
+	<!-- 					<li class="tab col s2"><a class="active" target="_self" -->
+	<!-- 						href="#/trabalheConosco">Trabalhe Conosco</a></li> -->
+	<!-- 					<li class="tab col s2"><a class="active" target="_self" -->
+	<!-- 						href="#/contato">Contato</a></li> -->
+
+	<!-- 				</ul> -->
+	<!-- 				<ul class="side-nav" id="mobile-demo"> -->
+	<!-- 					<li><a href="/">Home</a></li> -->
+	<!-- 					<li><a href="/produtos">Produtos</a></li> -->
+	<!-- 					<li><a href="collapsible.html">Javascript</a></li> -->
+	<!-- 					<li><a href="mobile.html">Mobile</a></li> -->
+	<!-- 				</ul> -->
+	<!-- 			</div> -->
+	<!-- 						<div id="#produtos" class="col s12"><a href="/produtos"></a></div> -->
+	<!-- 						<div id="test2" class="col s12">Test 2</div> -->
+	<!-- 						<div id="test3" class="col s12">Test 3</div> -->
+	<!-- 						<div id="test4" class="col s12">Test 4</div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
+
+
+	<!-- 			<div class="slider"> -->
+	<!-- 				<ul class="slides"> -->
+
+	<!-- 					<li><img src="http://lorempixel.com/580/250/nature/1" /> -->
+	<!-- 						<div class="caption center-align"> -->
+	<!-- 							<h3>This is our big Tagline!</h3> -->
+	<!-- 							<h5 class="light grey-text text-lighten-3">Here's our small -->
+	<!-- 								slogan.</h5> -->
+
+	<!-- 						</div></li> -->
+	<!-- 					<li><img src="http://lorempixel.com/580/250/nature/2" /> -->
+	<!-- 						<div class="caption left-align"> -->
+	<!-- 							<h3>Left Aligned Caption</h3> -->
+	<!-- 							<h5 class="light grey-text text-lighten-3">Here's our small -->
+	<!-- 								slogan.</h5> -->
+
+	<!-- 						</div></li> -->
+	<!-- 					<li><img src="http://lorempixel.com/580/250/nature/3" /> -->
+	<!-- 						<div class="caption right-align"> -->
+	<!-- 							<h3>Right Aligned Caption</h3> -->
+	<!-- 							<h5 class="light grey-text text-lighten-3">Here's our small -->
+	<!-- 								slogan.</h5> -->
+
+	<!-- 						</div></li> -->
+	<!-- 					<li><img src="http://lorempixel.com/580/250/nature/4" /> -->
+	<!-- 						<div class="caption center-align"> -->
+	<!-- 							<h3>This is our big Tagline!</h3> -->
+	<!-- 							<h5 class="light grey-text text-lighten-3">Here's our small -->
+	<!-- 								slogan.</h5> -->
+
+	<!-- 						</div></li> -->
+	<!-- 				</ul> -->
+	<!-- 			</div> -->
+
+
+
+
+
+
+
+
+	<div ng-view="ng-view"></div>
+
+
+</body>
+
+<footer class="page-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col l6 s12">
+				<h5 class="white-text">Footer Content</h5>
+				<p class="grey-text text-lighten-4">You can use rows and columns
+					here to organize your footer content.</p>
+			</div>
+			<div class="col l4 offset-l2 s12">
+				<h5 class="white-text">Links</h5>
+				<ul>
+					<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+					<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+					<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+					<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer-copyright">
+		<div class="container">
+			© 2016 Wkg Cosméticos <a class="grey-text text-lighten-4 right"
+				href="#!">More Links</a>
+		</div>
+	</div>
+</footer>
+</html>

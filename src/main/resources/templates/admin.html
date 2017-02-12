@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html ng-app="appUsuario">
 <head>
+<meta charset="UTF-8" />
 <base href="/" />
  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" 
 	rel="stylesheet" /> 
  <link type="text/css" rel="stylesheet" 	href="./bower_components/materialize/dist/css/materialize.css" 
  	media="screen,projection" />
+ 
+
+    <!-- Load Dropzone CSS -->
+  <link href="./css/dropzone/basic.css" rel="stylesheet" />
+  <link href="./css/dropzone/dropzone.css" rel="stylesheet" />
 <meta charset="UTF-8" name="viewport"
 	content="width=device-width, initial-scale=1.0" />
 <title>Home</title>
@@ -19,10 +25,21 @@
 <script src="./js/controller/usuario-controller.js"></script>
 <script src="./js/controller/perfil-controller.js"></script>
 <script src="./js/controller/franqueado-controller.js"></script>
-<script src="./js/controller/atendente-controller.js"></script>
+<script src="./js/controller/cliente-controller.js"></script>
 <script src="./js/controller/associado-controller.js"></script>
 <script src="./js/controller/login-controller.js"></script>
+<script src="./js/controller/categoria-controller.js"></script>
+<script src="./js/controller/produto-controller.js"></script>
 <script src="./js/interceptor/token-interceptor.js"></script>
+<script src="./js/controller/fileAppController.js"></script>
+<script src="./js/controller/fileAppDirectives.js"></script>
+<!-- <script src="./js/filter/moeda.js"></script> -->
+<!-- Load Dropzone JS -->
+<script src="./js/controller/dropzone.js"></script>
+
+<script type="text/javascript">
+        Dropzone.autoDiscover = false;
+    </script>
 <style>
 /* a { */
 /* /*   color: red; */ */
@@ -37,8 +54,11 @@
 	<a href="/usuarios"> Usuarios</a>
 	<a href="/perfis"> Perfis</a>
 	<a href="/franqueados">Franqueados</a>
-	<a href="/atendentes">Atendentes</a>
+	<a href="/clientes">Atendentes</a>
 	<a href="/associados">Associados</a>
+	<a href="/produtos">Produtos</a>
+	<a href="/upload">Imagens Cadastradas</a>
+	<a href="/categorias">Categorias</a>
 	<a href="/login">{{menuLogin}}</a>
 	
 	<div ng-view="ng-view"></div>
