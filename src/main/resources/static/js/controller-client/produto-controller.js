@@ -1,8 +1,9 @@
-appWkg.controller("produtoContrClient", function($scope, $http,$routeParams){
-	$scope.produto={};
-	$scope.produtos=[];
-	
-	$scope.produtoId=$routeParams.produtoId;
+appWkg.controller("produtoContrClient", function($scope, $http, $routeParams,
+		carrinhoFactory) {
+	$scope.produto = {};
+	$scope.produtos = [];
+
+	$scope.produtoId = $routeParams.produtoId;
 
 	var mostrarTodos = function() {
 		$http.get("/produtos").then(function(response) {
@@ -13,13 +14,11 @@ appWkg.controller("produtoContrClient", function($scope, $http,$routeParams){
 		});
 
 	};
+	$scope.adicionarItemAoCarrinho=function(produtoSelecionado){
+		carrinhoFactory.adicionarItem(produtoSelecionado);
+		
+	};
 
-	
-
-	
-
-	
 	mostrarTodos();
-	
-	
+
 });

@@ -78,15 +78,26 @@
 
 			<div class="input-field col s4 offset-s4">
 
-				<input id="preco" type="text" name="txtPreco"
-					ng-model="produto.preco" required />
-<!-- 										<pre>{{produto.preco|currency:"R$"}}</pre> -->
-				<label for="preco">Preço</label> <span
-					ng-show="frmProduto.txtPreco.$error.required && frmProduto.txtPreco.$dirty">Preço
+				<input id="quantidade" type="number" name="quantidade"
+					ng-model="produto.quantidade" required />
+
+				<label for="preco">Quantidade</label> <span
+					ng-show="frmProduto.quantidade.$error.required && frmProduto.quantidade.$dirty">Preço
 					Obrigatorio!</span>
 
 			</div>
 		</div>
+			<div class="row">
+			<div class="input-field col s4 offset-s4">
+				<input id="preco" type="text" name="txtPreco"
+					ng-model="produto.preco" required /> <label for="preco">Preço</label>
+					<!-- 										<pre>{{produto.preco|currency:"R$"}}</pre> -->
+				<span
+					ng-show="frmProduto.preco.$error.required && frmProduto.preco.$dirty">Descrição
+					Obrigatória</span>
+
+			</div>
+			</div>
 
 		<div class="row">
 			<div class="input-field col s12">

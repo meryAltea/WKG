@@ -37,6 +37,8 @@ public class Produto {
 	private String descricao;
 	@Column 
 	private float preco;
+	@Column
+	private Integer quantidade;
 //	@NotNull
 	@OneToMany (mappedBy="produto")
 	private List<FileUpload> fotos;

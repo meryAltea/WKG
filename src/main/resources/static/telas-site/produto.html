@@ -8,9 +8,9 @@
 				<a href="/detalhes/{{prod.id}}"><img
 					ng-src="data:image/JPEG;base64,{{prod.fotos[0].file}}" width="150" /><br>
 					{{prod.nome}} <br>{{"R$"+ prod.preco}}</a>
-				<div ng-controller="carrinhoController">
+				
 					<a class="btn-floating btn-medium waves-effect waves-light teal"><i
-						class="material-icons" ng-click="adicionarItemAoCarrinho(prod)">add_shopping_cart</i></a></div>
+						class="material-icons" ng-click="adicionarItemAoCarrinho(prod)">add_shopping_cart</i></a>
 				
 			</div>
 
