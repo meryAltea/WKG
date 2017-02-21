@@ -1,5 +1,9 @@
-appWkg.controller("mainCtr", function() {
-
+appWkg.controller("mainCtr", function($scope, $rootScope, $route, $location) {
+	if(localStorage.getItem("userToken")==null){
+		$rootScope.menuLogin="Login";
+	}else {
+		$rootScope.menuLogin="Logout";
+	}
 	$(document).ready(function() {
 		$('.dropdown-button').dropdown();
 		$('.button-collapse').sideNav();

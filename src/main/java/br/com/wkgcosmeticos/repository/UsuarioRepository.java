@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import br.com.wkgcosmeticos.entidades.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario,Integer>{
-	@Query(value="Select u from Usuario u where u.login=:plogin")
-	public Usuario buscarPorUsername (@Param ("plogin") String login);
+	@Query("select u from Usuario u where u.login=:plogin")
+	 Usuario buscarPorUsername (@Param ("plogin") String login);
 }

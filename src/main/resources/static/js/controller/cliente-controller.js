@@ -47,7 +47,8 @@ appUsuario.controller("clienteController", function($http, $scope) {
 			window.alert("Erro ao alterar!")
 		});
 	};
-		 if(window.confirm("Tem certeza que deseja excluir?")){
+		excluirCliente= function (id){
+		if(window.confirm("Tem certeza que deseja excluir?")){
 			$http.delete("/clientes/"+id ).then (function(){
 				window.alert("Excluído com sucesso!");
 				mostrarTodos();

@@ -11,13 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.wkgcosmeticos.entidades.Cliente;
-
+import br.com.wkgcosmeticos.entidades.Usuario;
 import br.com.wkgcosmeticos.service.ClienteService;
+import br.com.wkgcosmeticos.service.UsuarioService;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 
 @RestController
 public class ClienteController {
 	@Autowired
 	ClienteService clienteService;
+	UsuarioService usuarioService;
 
 	@RequestMapping(value = "/clientes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Cliente cadastrar(@RequestBody Cliente cliente) {
@@ -42,5 +46,13 @@ public class ClienteController {
 	@RequestMapping(value = "/clientes/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Cliente buscarPorId(@PathVariable Integer id) {
 		return clienteService.buscarPorId(id);
+	}
+	@RequestMapping(value = "/clientes/{login}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public Cliente buscarPorCliente(@PathVariable String login){
+		
+		Usuario usuario= usuarioService.buscarPorUsername(login);
+		System.out.println(login);
+		return clienteService.buscarPorIdUsuario(usuario.getId());
+		
 	}
 }

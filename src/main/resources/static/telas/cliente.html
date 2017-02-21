@@ -69,16 +69,6 @@
 				<label for="icon_email">Email</label> 
 				<span ng-show="frmCliente.email.$error.required && frmCliente.email.$dirty">Email Obrigatório</span> 
 				<span ng-show="frmCliente.txtEmail.$error.email">Email Inválido!</span>
-			</div>
-			 <div class="input-field col s6">
-			 	<i class="material-icons prefix">perm_contact_calendar</i>
-			 	<input id="icon_perm_contact_calendar" class="validate" type="text" name="dtCad"ng-minlength="8" ng-model="cliente.dataCadAtend" required /> 
-				<label>Data de Cadastro</label> 
-				<span ng-show= "frmCliente.dtCad.$error.required && frmCliente.dtCad.$dirty">Data de Cadastro Obrigatória!</span> 
-				<span ng-show="frmCliente.dtCad.$error.minlength">Data muito pequena!</span>
-			</div>
-		</div>	
-		<div class="row">
 			 <div class="input-field col s6">
 			 	<i class="material-icons prefix">my_location</i>
 			 	<input id="icon_my_location" class="validate" type="text" name="txtRua" ng-maxlength="50" ng-model="cliente.endereco.rua" required /> 
@@ -86,6 +76,8 @@
 				<span ng-show="frmCliente.txtRua.$error.required && frmCliente.txtRua.$dirty">Nome de rua Obrigatória!</span> 
 				<span ng-show="frmCliente.txtRua.$error.maxlength">Nome de rua muito grande!</span>
 			</div>
+		</div>
+		<div class="row">	
 			<div class="input-field col s6">
 			 	<i class="material-icons prefix">toc</i>
 			 	<input id="icon_toc" class="validate" type="text" name="numEstb"ng-maxlength="5" ng-model="cliente.endereco.numero" required />
@@ -93,24 +85,21 @@
 				<span ng-show="frmCliente.numEstb.$error.required && frmCliente.numEstb.$dirty">Número Obrigatório!</span> 
 				<span ng-show="frmCliente.numEstb.$error.maxlength">Número muito Grande!</span>
 			</div>
-		</div>	 
-		<div class="row">
-			 <div class="input-field col s6">
+			<div class="input-field col s6">
 			 	<i class="material-icons prefix">location_on</i>
 			 	<input id="icon_location_on" class="validate" type="text" name="txtCid" ng-maxlength="15" ng-model="cliente.endereco.cidade" required />
 				<label for="icon_location_on">Cidade</label> 
 				<span ng-show="frmCliente.txtCid.$error.required && frmCliente.txtCid.$dirty">Cidade Obrigatória!</span> 
 				<span ng-show="frmCliente.txtCid.$error.maxlength">Nome de cidade muito grande!</span>
 			</div>
+		</div>
+		<div class="row">	
 			<div class="input-field col s6">
 			 	<i class="material-icons prefix">trending_down</i>
 			 	<input id="icon_trending_down" class="validate" type="text" name="txtBairro" ng-model="cliente.endereco.bairro" required />
 				<label for="icon_trendind_down">Bairro</label> 
-				<span ng-show="frmCliente.txtBairro.$error.required && frmCliente.txtBairro.$dirty">Bairro Obrigatório!</span> 
-				
+				<span ng-show="frmCliente.txtBairro.$error.required && frmCliente.txtBairro.$dirty">Bairro Obrigatório!</span> 		
 			</div>
-		</div>	
-		<div class="row">
 			<div class="input-field col s6">
 			 	<i class="material-icons prefix">sort_by_alpha</i>
 			 	<input id="icon_sort_by_alpha" class="validate" type="text" name="txtEst" ng-minlength="2" ng-maxlength="2" ng-model="cliente.endereco.uf" required /> 
@@ -119,7 +108,8 @@
 				<span ng-show="frmCliente.txtEst.$error.minlength">Estado inválido!</span> 
 				<span ng-show="frmCliente.txtEst.$error.maxlength">Estado inválido!</span>
 			</div>
-			
+		</div>
+		<div class="row">
 			<div class="input-field col s6">
 			 	<i class="material-icons prefix">view_list</i>
 			 	<input id="icon_view_list" class="validate" type="text" name="numCep" ng-minlength="8" ng-maxlength="8" ng-model="cliente.endereco.cep" required /> 
@@ -128,14 +118,14 @@
 				<span ng-show="frmCliente.numCep.$error.minlength">Cep pequeno!</span> 
 				<span ng-show="frmCliente.numCep.$error.maxlength">Cep grande! </span>
 			</div>
-		</div>	
-		<div class="row">
 			<div class="input-field col s6">
 			 	<i class="material-icons prefix">perm_identity</i>
 			 	<input id="icon_perm_identity" class="validate" type="text" name="txtLogin" ng-minlength="6" ng-maxlength="10" ng-model="cliente.usuario.login" required />
 				<label for="icon_perm_identity">Login</label> 
 				<span ng-show="frmCliente.txtLogin.$error.required && frmCliente.txtLogin.$dirty">Login Obrigatorio</span>
 			</div>
+		</div>
+		<div class="row">
 			<div class="input-field col s6">
 			 	<i class="material-icons prefix">lock_outline</i>
 			 	<input id="icon_lock_outline" class="validate" type="password" name="passSenha" ng-minlength="8" ng-maxlength="20" ng-model="cliente.usuario.senha" required />
@@ -167,7 +157,7 @@
 				<div ng-repeat="cli in clientes" style="border:0px">
 					
 					<ul class="collection" >
-					<li class="collection-item "><div> {{cli.idAtend + '-'+ cli.nomeAtend}}  <a href="#!" class="secondary-content"  ng-click="excluirCliente(cli.idAtend)"><i class="material-icons">delete</i></a> <a href="#!" class="secondary-content"  ng-click="prepararAlterar(cli)"><i class="material-icons">edit</i></a></div></li>
+					<li class="collection-item "><div> {{cli.id + '-'+ cli.nome}}  <a href="#!" class="secondary-content"  ng-click="excluirCliente(cli.idAtend)"><i class="material-icons">delete</i></a> <a href="#!" class="secondary-content"  ng-click="prepararAlterar(cli)"><i class="material-icons">edit</i></a></div></li>
 					</ul>
 <!-- 						<div class="center-btn"> -->
 						

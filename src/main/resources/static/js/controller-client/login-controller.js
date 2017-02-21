@@ -4,7 +4,7 @@ appWkg.controller("loginController", function($http, $scope, $rootScope,
 	$scope.login = {};
 	$scope.token = "";
 	localStorage.removeItem("userToken");
-	$rootScope.menuLogin = "Login";
+	$rootScope.menuLogin = "Entrar";
 	$scope.autenticar = function() {
 
 		$http.post("/autenticar", $scope.login).then(function(response) {
@@ -13,7 +13,7 @@ appWkg.controller("loginController", function($http, $scope, $rootScope,
 			$scope.token = response.data;
 			localStorage.setItem("userToken", response.data.token);
 			$rootScope.menuLogin = "Sair";
-			$location.path('/')
+			$location.path('/');
 		}, function(response) {
 			window.alert(response.data.message);
 
@@ -23,5 +23,7 @@ appWkg.controller("loginController", function($http, $scope, $rootScope,
 		// $scope.login.senha);
 
 	};
+	
+
 
 });

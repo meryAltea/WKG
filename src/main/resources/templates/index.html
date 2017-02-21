@@ -36,12 +36,13 @@
 </head>
 <body ng-controller="mainCtr">
 <div class="navbar-fixed">
-	<nav style="background-color:#00bfa5;">
+	<nav>
 		<div class="nav-wrapper" style="text-align:right;">
 			<a class="btn-floating btn-medium waves-effect waves-light teal" href="/carrinho"><i class="material-icons" >shopping_cart</i></a>
 			
-			<a href="/login">Entrar</a>
-
+			<a href="/login">{{menuLogin}}</a>
+			<a href="/cliente">Cadastre-se</a>
+			
 		</div>
 	</nav>
 	</div>
@@ -71,6 +72,8 @@
 						class="mdi-navigation-arrow-drop-down right"></i></li>
 					<li><a href="/trabalheconosco">Trabalhe Conosco</a></li>
 					<li><a href="/contato">Contato</a></li>
+					
+					
 				</ul>
 
 				<ul class="side-nav" id="mobile-demo">

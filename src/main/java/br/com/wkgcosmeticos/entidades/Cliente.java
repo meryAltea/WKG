@@ -42,7 +42,7 @@ public class Cliente {
 	private String cel;
 	@Column(nullable = false, length = 20)
 	private String email;
-	@Temporal(TemporalType.DATE)
-	@Column(nullable = false)
-	private Date dataCad;
+//	@Temporal(TemporalType.DATE)
+//	@Column(nullable = false)
+//	private Date dataCad;
 }

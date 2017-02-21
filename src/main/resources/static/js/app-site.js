@@ -17,6 +17,9 @@ $routeProvider
 }).when("/carrinho", {
 	templateUrl : 'telas-site/carrinho.html',
 	controller : 'carrinhoController'
+}).when("/cliente", {
+	templateUrl : 'telas-site/cliente.html',
+	controller : 'clienteController'
 }).otherwise({
 	rediretTo : '/'
 });		

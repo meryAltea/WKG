@@ -18,7 +18,7 @@ public class ClienteService {
 	PerfilRepository perfilRepository;
 
 	public Cliente cadastrar(Cliente cliente) {
-		Perfil perfil= perfilRepository.findOne(2); 
+		Perfil perfil = perfilRepository.findOne(2);
 		cliente.getUsuario().setPerfil(perfil);
 		return clienteRepository.save(cliente);
 	}
@@ -38,4 +38,13 @@ public class ClienteService {
 	public Cliente buscarPorId(Integer id) {
 		return clienteRepository.findOne(id);
 	}
+
+	public Cliente buscarPorIdUsuario(Integer id) {
+		return clienteRepository.buscarPorIdUsuario(id);
+	}
+
+//	public Cliente buscarPorCliente(String nome) {
+//
+//		return clienteRepository.findOne(nome);
+//	}
 }
