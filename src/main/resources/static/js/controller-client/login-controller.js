@@ -1,5 +1,5 @@
 appWkg.controller("loginController", function($http, $scope, $rootScope,
-		$location) {
+		$location, carrinhoFactory) {
 
 	$scope.login = {};
 	$scope.token = "";
@@ -13,7 +13,12 @@ appWkg.controller("loginController", function($http, $scope, $rootScope,
 			$scope.token = response.data;
 			localStorage.setItem("userToken", response.data.token);
 			$rootScope.menuLogin = "Sair";
-			$location.path('/');
+			$scope.carrinho = carrinhoFactory.getCarrinho();
+			if ($scope.carrinho.length > 0) {
+				$location.path('/confirmarDados');
+			} else {
+				$location.path('/');
+			}
 		}, function(response) {
 			window.alert(response.data.message);
 
@@ -23,7 +28,5 @@ appWkg.controller("loginController", function($http, $scope, $rootScope,
 		// $scope.login.senha);
 
 	};
-	
-
 
 });

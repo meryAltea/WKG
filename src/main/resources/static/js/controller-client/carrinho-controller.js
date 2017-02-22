@@ -19,7 +19,7 @@ appWkg.controller("carrinhoController", function($scope, carrinhoFactory,
 	$scope.verificarUsuario = function() {
 
 		if (localStorage.getItem("userToken") != null) {
-			$location.path('/');
+			$location.path('/confirmarDados');
 		} else {
 			window.alert("É necessário logar!");
 			$location.path('/login');

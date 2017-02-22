@@ -20,6 +20,9 @@ $routeProvider
 }).when("/cliente", {
 	templateUrl : 'telas-site/cliente.html',
 	controller : 'clienteController'
+}).when("/confirmarDados", {
+	templateUrl : 'telas-site/confirmar-dados-pessoais.html',
+	controller : 'confirmarDadosController'
 }).otherwise({
 	rediretTo : '/'
 });		

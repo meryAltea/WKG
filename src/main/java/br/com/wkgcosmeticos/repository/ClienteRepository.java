@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import br.com.wkgcosmeticos.entidades.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
-	@Query(value="select c from Cliente c where c.usuario=:usuarioid")
+	@Query("select c from Cliente c where c.usuario.id=:usuarioid")
 	Cliente buscarPorIdUsuario(@Param("usuarioid") Integer id);
 
 

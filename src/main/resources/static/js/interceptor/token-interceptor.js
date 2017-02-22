@@ -3,6 +3,7 @@ appUsuario.factory("tokenInterceptor", function($q, $location){
 		
 		'request': function(config){
 			config.headers.Authorization='Bearer '+ localStorage.getItem("userToken");
+			
 			return config;
 			
 		},   'response': function(response) {

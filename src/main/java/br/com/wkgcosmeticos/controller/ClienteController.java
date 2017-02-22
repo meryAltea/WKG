@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,7 @@ import io.jsonwebtoken.Jwts;
 public class ClienteController {
 	@Autowired
 	ClienteService clienteService;
+	@Autowired
 	UsuarioService usuarioService;
 
 	@RequestMapping(value = "/clientes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -47,11 +49,11 @@ public class ClienteController {
 	public Cliente buscarPorId(@PathVariable Integer id) {
 		return clienteService.buscarPorId(id);
 	}
-	@RequestMapping(value = "/clientes/{login}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public Cliente buscarPorCliente(@PathVariable String login){
+	@RequestMapping(value = "/clientes/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public Cliente buscarPorCliente(@RequestHeader(value="token") String token){
 		
-		Usuario usuario= usuarioService.buscarPorUsername(login);
-		System.out.println(login);
+		Claims claims=Jwts.parser().setSigningKey("banana").parseClaimsJws(token).getBody();
+		Usuario usuario= usuarioService.buscarPorUsername(claims.getSubject());
 		return clienteService.buscarPorIdUsuario(usuario.getId());
 		
 	}
