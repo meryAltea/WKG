@@ -11,28 +11,40 @@
 <div class="row">
 	<form class= "col s12" novalidate name="frmPessoa">
 		<div class="row">
+		
 		<input class="with-gap" name="group3" ng-model="pessoaFisica" type="radio" id="pf" ng-checked="pessoaFisica" />
     		<label for="pf">Pessoa Física</label>
     		<input class="with-gap" name="group3" ng-model="pessoaJuridica" type="radio" id="pj" ng-checked="pessoaJuridica" />
     		<label for="pj">Pessoa Juridica</label>
-			 {{pessoaFisica}}
-			 {{pessoaJuridica}}
+			
+			<div ng-show="!pessoaFisica" ng-hide="!pessoaJuridica">
 			 <div class="input-field col s6" >
 			 	<i class="material-icons prefix">account_circle</i>
-			 	<input id="icon_prefix" class="validate" type="text" name="txtNome" ng-show="pessoaFisica" ng-maxlength="30" ng-model="pessoa.nome" required />
+			 	<input id="icon_prefix" class="validate" type="text" name="txtNome"  ng-maxlength="30" ng-model="pessoa.nome" required />
 				<label for="icon_prefix">Nome Completo</label>  
 				<span ng-show="frmPessoa.txtNome.$error.required && frmPessoa.txtNome.$dirty">Nome Obrigatório!</span> 
 				<span ng-show="frmPessoa.txtNome.$error.maxlength">Nome muito grande!</span>	
 			</div>
-			 <div class="input-field col s6">
-			 	<i class="material-icons prefix">account_circle</i>
-			 	<input id="icon_prefix" class="validate" type="text" name="txtRazao" ng-maxlength="60" ng-disabled="!pessoaJuridica" ng-model="pessoa.razaoSocial" required />
-				<label for="icon_prefix">Razão Social</label>  
-				<span ng-show="frmPessoa.txtRazao.$error.required && frmPessoa.txtRazao.$dirty">Razão Social Obrigatória!</span> 
-				<span ng-show="frmPessoa.txtRazao.$error.maxlength">Razão Social inválida!</span>	
+			    <div class="input-field col s6">
+			 	<i class="material-icons prefix">assignment_ind</i>
+			 	<input id="icon_assignment_ind" class="validate" type="text" name="numCpf"  ng-minlength="11" ng-maxlength="11" ng-model="pessoa.cpf" required /> 
+				<label for="icon_assignment_ind">CPF</label> 
+				<span ng-show="frmPessoa.numCpf.$error.required && frmPessoa.numCpf.$dirty">Cpf Obrigatório!</span> 
+				<span ng-show="frmPessoa.numCpf.$error.maxlength">Cpf muito grande!</span>
+				<span ng-show="frmPessoa.numCpf.$error.minlength">Cpf muito pequeno!</span>
+			</div>
+				<div class="input-field col s6">
+			 	<i class="material-icons prefix">face</i>
+			 	<input id="icon_face" class="validate" type="text" name="numRg"  ng-minlength="9" ng-maxlength="9" ng-model="pessoa.rg" required /> 
+				<label for="icon_face">RG</label> 
+				<span ng-show="frmPessoa.numRg.$error.required && frmPessoa.numRg.$dirty">RG Obrigatório!</span> 
+				<span ng-show="frmPessoa.numRg.$error.maxlength">RG muito grande!</span>
+				<span ng-show="frmPessoa.numRg.$error.minlength">RG muito pequeno!</span>
 			</div>
 		</div>
-		<div class="row">	
+		
+		<div ng-show="!pessoaJuridica" ng-hide="!pessoaFisica">
+			
 			<div class="input-field col s6">
 				<i class="material-icons prefix">today</i> 
 				<input id="icon_today" class="validate" type="text" name="inEst"ng-maxlength="9" ng-disabled="!pessoaJuridica" ng-model="pessoa.inscricaoEstadual" required />
@@ -48,25 +60,8 @@
 				<span ng-show="frmPessoa.inMun.$error.required && frmPessoa.inMun.$dirty">Inscrição Municipal obrigatória!</span> 
 				
 			</div>
-		</div>
-		<div class="row">	
-			<div class="input-field col s6">
-				<i class="material-icons prefix">today</i> 
-				<input id="icon_today" class="validate" type="text" name="dtData" ng-model="pessoa.dataNasc" required />
-				<label for="icon_today">Data de Nascimento</label>  
-				<span ng-show="frmPessoa.dtData.$error.required && frmPessoa.dtData.$dirty">Data Obrigatória!</span> 
 			
-			</div>	
-	   	    <div class="input-field col s6">
-			 	<i class="material-icons prefix">assignment_ind</i>
-			 	<input id="icon_assignment_ind" class="validate" type="text" name="numCpf" ng-show="!pessoaFisica" ng-minlength="11" ng-maxlength="11" ng-model="pessoa.cpf" required /> 
-				<label for="icon_assignment_ind">CPF</label> 
-				<span ng-show="frmPessoa.numCpf.$error.required && frmPessoa.numCpf.$dirty">Cpf Obrigatório!</span> 
-				<span ng-show="frmPessoa.numCpf.$error.maxlength">Cpf muito grande!</span>
-				<span ng-show="frmPessoa.numCpf.$error.minlength">Cpf muito pequeno!</span>
-			</div>
-		</div>
-		<div class="row>">	
+		
 			<div class="input-field col s6">
 			 	<i class="material-icons prefix">assignment_ind</i>
 			 	<input id="icon_assignment_ind" class="validate" type="text" name="numCnpj" ng-disabled="!pessoaJuridica"  ng-maxlength="14" ng-model="pessoa.cnpj" required /> 
@@ -76,14 +71,26 @@
 				<span ng-show="frmPessoa.numCnpj.$error.minlength">CNPJ inválido!</span>
 			</div>
 			<div class="input-field col s6">
-			 	<i class="material-icons prefix">face</i>
-			 	<input id="icon_face" class="validate" type="text" name="numRg" ng-disabled="!pessoaFisica" ng-minlength="9" ng-maxlength="9" ng-model="pessoa.rg" required /> 
-				<label for="icon_face">RG</label> 
-				<span ng-show="frmPessoa.numRg.$error.required && frmPessoa.numRg.$dirty">RG Obrigatório!</span> 
-				<span ng-show="frmPessoa.numRg.$error.maxlength">RG muito grande!</span>
-				<span ng-show="frmPessoa.numRg.$error.minlength">RG muito pequeno!</span>
+			 	<i class="material-icons prefix">account_circle</i>
+			 	<input id="icon_prefix" class="validate" type="text" name="txtRazao" ng-maxlength="60" ng-disabled="!pessoaJuridica" ng-model="pessoa.razaoSocial" required />
+				<label for="icon_prefix">Razão Social</label>  
+				<span ng-show="frmPessoa.txtRazao.$error.required && frmPessoa.txtRazao.$dirty">Razão Social Obrigatória!</span> 
+				<span ng-show="frmPessoa.txtRazao.$error.maxlength">Razão Social inválida!</span>	
 			</div>
+		
 		</div>	
+		</div>
+		<div class="row">	
+			<div class="input-field col s6">
+				<i class="material-icons prefix">today</i> 
+				<input id="icon_today" class="validate" type="text" name="dtData" ng-model="pessoa.dataNasc" required />
+				<label for="icon_today">Data de Nascimento</label>  
+				<span ng-show="frmPessoa.dtData.$error.required && frmPessoa.dtData.$dirty">Data Obrigatória!</span> 
+			
+			</div>	 
+	   	
+		</div>
+		
 		<div class="row">
 			 <div class="input-field col s6">
 			 	<i class="material-icons prefix">phone</i>

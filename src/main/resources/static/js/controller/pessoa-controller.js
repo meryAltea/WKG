@@ -1,8 +1,8 @@
 appUsuario.controller("pessoaController", function($http, $scope) {
 	$scope.pessoa = {};
 	$scope.pessoas = [];
-	$scope.pessoaFisica=false;
-	$scope.pessoaJuridica=false;
+	$scope.pessoaFisica=true;
+	$scope.pessoaJuridica=true;
 	
 //	var mostrarTodos = function() {
 //		$http.get("/pessoas").then(function(response) {
