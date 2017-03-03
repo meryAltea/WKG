@@ -9,6 +9,8 @@ import lombok.Data;
 @Embeddable
 
 public class Endereco {
+	@Column(nullable = false, length = 20)
+	private String pais;
 	@Column(nullable = false, length = 50)
 	private String rua;
 	@Column(nullable = false, length = 5)

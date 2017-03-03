@@ -14,9 +14,9 @@ $routeProvider
 }).when("/franqueados", {
 	templateUrl : 'telas/franqueado.html',
 	controller : 'franqueadoController'
-}).when("/clientes", {
-	templateUrl : 'telas/cliente.html',
-	controller : 'clienteController'
+}).when("/pessoas", {
+	templateUrl : 'telas/pessoa.html',
+	controller : 'pessoaController'
 }).when("/associados", {
 	templateUrl : 'telas/associado.html',
 	controller : 'associadoController'

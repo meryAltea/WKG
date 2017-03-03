@@ -10,8 +10,14 @@
 			class="secondary-content" ng-click="removerItemCarrinho($index)">
 			<i class="material-icons">delete</i>
 		</a>
+		
 </div>
-<div>total:{{totalDaCompra}}</div>
+<div>
+<!-- INICIO CODIGO PAGSEGURO -->
+<a href="https://pagseguro.uol.com.br/desenvolvedor/simulador_de_frete.jhtml?CepOrigem=18277210&amp;Peso=2&amp;Valor=25,00" id="ps_freight_simulator" target="_blank"><img src="https://p.simg.uol.com.br/out/pagseguro/i/user/imgCalculoFrete.gif" id="imgCalculoFrete" alt="Cálculo automático de frete" border="0" /></a>
+<script type="text/javascript" src="https://p.simg.uol.com.br/out/pagseguro/j/simulador_de_frete.js"></script>
+<!-- FINAL CODIGO PAGSEGURO -->
+total:{{totalDaCompra}}</div>
 <div>
 	<button class="btn waves-effect waves-light" type="submit"
 		name="action" ng-click="verificarUsuario()">

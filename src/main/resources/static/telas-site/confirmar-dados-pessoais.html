@@ -1,7 +1,30 @@
 <div>
-	
-		<input id="last_name"  ng-model="cliente.cel"/>
-		{{cliente.cel}} celular
+		
+		<input ng-model="pessoa.nome" ng-disabled="!atualizarCadastro"/>
+		<input type="checkbox" id="atualizar" ng-model="atualizarCadastro" ng-checked="atualizarCadastro" />
+      		<label for="atualizar"> Deseja atualizar seu cadastro?</label>
+		<input ng-model="pessoa.cpf" ng-disabled="!atualizarCadastro"/>
+		<input ng-model="pessoa.rg" ng-disabled="!atualizarCadastro"/>
+		<input ng-model="pessoa.tel" ng-disabled="!atualizarCadastro"/>
+		<input ng-model="pessoa.cel" ng-disabled="!atualizarCadastro"/>
+		<input ng-model="pessoa.email" ng-disabled="!atualizarCadastro"/>
+		<input type="checkbox" id="test5" ng-model="confirmarEndereco" ng-checked="confirmarEndereco" />
+      		<label for="test5"> Deseja informar outro endereço para entrega?</label>
+		<div ng-show="!confirmarEndereco">
+			<input ng-model="pessoa.endereco.rua" ng-disabled="!atualizarCadastro"/>
+			<input ng-model="pessoa.endereco.numero" ng-disabled="!atualizarCadastro"/>
+			<input ng-model="pessoa.endereco.cidade" ng-disabled="!atualizarCadastro"/>
+			<input ng-model="pessoa.endereco.bairro" ng-disabled="!atualizarCadastro"/>
+			<input ng-model="pessoa.endereco.cep" ng-disabled="!atualizarCadastro"/>
+		</div>
+		<div ng-show="confirmarEndereco">
+			<input ng-model="endereco.numero"/>
+			<input ng-model="endereco.cidade"/>
+			<input ng-model="endereco.bairro"/>
+			<input ng-model="endereco.cep"/>
+		</div>
+		
+		
 	
 
 

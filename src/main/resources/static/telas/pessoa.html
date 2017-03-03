@@ -1,0 +1,228 @@
+<head>
+<meta charset="UTF-8" />
+
+</head>
+<style>
+	fieldset{
+		display:inline;
+	}
+
+</style>
+<div class="row">
+	<form class= "col s12" novalidate name="frmPessoa">
+		<div class="row">
+		<input class="with-gap" name="group3" ng-model="pessoaFisica" type="radio" id="pf" ng-checked="pessoaFisica" />
+    		<label for="pf">Pessoa Física</label>
+    		<input class="with-gap" name="group3" ng-model="pessoaJuridica" type="radio" id="pj" ng-checked="pessoaJuridica" />
+    		<label for="pj">Pessoa Juridica</label>
+			 {{pessoaFisica}}
+			 {{pessoaJuridica}}
+			 <div class="input-field col s6" >
+			 	<i class="material-icons prefix">account_circle</i>
+			 	<input id="icon_prefix" class="validate" type="text" name="txtNome" ng-show="pessoaFisica" ng-maxlength="30" ng-model="pessoa.nome" required />
+				<label for="icon_prefix">Nome Completo</label>  
+				<span ng-show="frmPessoa.txtNome.$error.required && frmPessoa.txtNome.$dirty">Nome Obrigatório!</span> 
+				<span ng-show="frmPessoa.txtNome.$error.maxlength">Nome muito grande!</span>	
+			</div>
+			 <div class="input-field col s6">
+			 	<i class="material-icons prefix">account_circle</i>
+			 	<input id="icon_prefix" class="validate" type="text" name="txtRazao" ng-maxlength="60" ng-disabled="!pessoaJuridica" ng-model="pessoa.razaoSocial" required />
+				<label for="icon_prefix">Razão Social</label>  
+				<span ng-show="frmPessoa.txtRazao.$error.required && frmPessoa.txtRazao.$dirty">Razão Social Obrigatória!</span> 
+				<span ng-show="frmPessoa.txtRazao.$error.maxlength">Razão Social inválida!</span>	
+			</div>
+		</div>
+		<div class="row">	
+			<div class="input-field col s6">
+				<i class="material-icons prefix">today</i> 
+				<input id="icon_today" class="validate" type="text" name="inEst"ng-maxlength="9" ng-disabled="!pessoaJuridica" ng-model="pessoa.inscricaoEstadual" required />
+				<label for="icon_today">Inscrição Estadual</label> 
+				<span ng-show="frmPessoa.inEst.$error.maxlength">Inscrição Estadual inválida!</span> 
+				<span ng-show="frmPessoa.inEst.$error.required && frmPessoa.inEst.$dirty">Inscrição Estadual obrigatória!</span> 
+			
+			</div>	
+	   	    <div class="input-field col s6">
+			 	<i class="material-icons prefix">assignment_ind</i>
+			 	<input id="icon_assignment_ind" class="validate" type="text" name="inMun" ng-disabled="!pessoaJuridica"  ng-model="pessoa.inscricaoMunicipal" required /> 
+				<label for="icon_assignment_ind">Inscrição Municipal</label> 
+				<span ng-show="frmPessoa.inMun.$error.required && frmPessoa.inMun.$dirty">Inscrição Municipal obrigatória!</span> 
+				
+			</div>
+		</div>
+		<div class="row">	
+			<div class="input-field col s6">
+				<i class="material-icons prefix">today</i> 
+				<input id="icon_today" class="validate" type="text" name="dtData" ng-model="pessoa.dataNasc" required />
+				<label for="icon_today">Data de Nascimento</label>  
+				<span ng-show="frmPessoa.dtData.$error.required && frmPessoa.dtData.$dirty">Data Obrigatória!</span> 
+			
+			</div>	
+	   	    <div class="input-field col s6">
+			 	<i class="material-icons prefix">assignment_ind</i>
+			 	<input id="icon_assignment_ind" class="validate" type="text" name="numCpf" ng-show="!pessoaFisica" ng-minlength="11" ng-maxlength="11" ng-model="pessoa.cpf" required /> 
+				<label for="icon_assignment_ind">CPF</label> 
+				<span ng-show="frmPessoa.numCpf.$error.required && frmPessoa.numCpf.$dirty">Cpf Obrigatório!</span> 
+				<span ng-show="frmPessoa.numCpf.$error.maxlength">Cpf muito grande!</span>
+				<span ng-show="frmPessoa.numCpf.$error.minlength">Cpf muito pequeno!</span>
+			</div>
+		</div>
+		<div class="row>">	
+			<div class="input-field col s6">
+			 	<i class="material-icons prefix">assignment_ind</i>
+			 	<input id="icon_assignment_ind" class="validate" type="text" name="numCnpj" ng-disabled="!pessoaJuridica"  ng-maxlength="14" ng-model="pessoa.cnpj" required /> 
+				<label for="icon_assignment_ind">CNPJ</label> 
+				<span ng-show="frmPessoa.numCnpj.$error.required && frmPessoa.numCnpj.$dirty">CNPJ Obrigatório!</span> 
+				<span ng-show="frmPessoa.numCnpj.$error.maxlength">CNPJ inválido!</span>
+				<span ng-show="frmPessoa.numCnpj.$error.minlength">CNPJ inválido!</span>
+			</div>
+			<div class="input-field col s6">
+			 	<i class="material-icons prefix">face</i>
+			 	<input id="icon_face" class="validate" type="text" name="numRg" ng-disabled="!pessoaFisica" ng-minlength="9" ng-maxlength="9" ng-model="pessoa.rg" required /> 
+				<label for="icon_face">RG</label> 
+				<span ng-show="frmPessoa.numRg.$error.required && frmPessoa.numRg.$dirty">RG Obrigatório!</span> 
+				<span ng-show="frmPessoa.numRg.$error.maxlength">RG muito grande!</span>
+				<span ng-show="frmPessoa.numRg.$error.minlength">RG muito pequeno!</span>
+			</div>
+		</div>	
+		<div class="row">
+			 <div class="input-field col s6">
+			 	<i class="material-icons prefix">phone</i>
+			 	<input id="icon_telephone" class="validate" type="tel" name="numTel" ng-maxlength="10" ng-minlength="10" ng-model="pessoa.tel" required />
+				<label for="icon_telephone">Telefone</label> 
+			 	<span ng-show="frmPessoa.numTel.$error.required && frmPessoa.numTel.$dirty">Telefone Obrigatório!</span> 
+			 	<span ng-show="frmPessoa.numTel.$error.minlength">Número de telefone muito pequeno!</span>
+			 	<span ng-show="frmPessoa.numTel.$error.maxlength">Número de telefone muito grande!</span>
+			</div>
+			<div class="input-field col s6">
+			 	<i class="material-icons prefix">stay_current_portrait</i>
+			 	<input id="icon_stay_current_portrait" class="validate" type="tel" name="numCel"ng-minlength="10" ng-maxlength="11" ng-model="pessoa.cel" required />
+				<label for="icon_stay_current_portrait">Celular</label> 
+				<span ng-show="frmPessoa.numCel.$error.required && frmPessoa.numCel.$dirty">Celular Obrigatório</span> 
+				<span ng-show="frmPessoa.numCel.$error.minlength">Número de celular muito pequeno!</span> 
+				<span ng-show="frmPessoa.numCel.$error.maxlength">Número de celular muito grande!</span>
+			</div>
+		</div>	
+		<div class="row">
+			 <div class="input-field col s6">
+			 	<i class="material-icons prefix">email</i>
+			 	<input id="icon_email" class="validate" type="email" name="email" ng-model="pessoa.email" required /> 
+				<label for="icon_email">Email</label> 
+				<span ng-show="frmPessoa.email.$error.required && frmPessoa.email.$dirty">Email Obrigatório</span> 
+				<span ng-show="frmPessoa.txtEmail.$error.email">Email Inválido!</span>
+			</div>	
+			 <div class="input-field col s6">
+			 	<i class="material-icons prefix">my_location</i>
+			 	<input id="icon_my_location" class="validate" type="text" name="txtRua" ng-maxlength="50" ng-model="pessoa.endereco.rua" required /> 
+			 	<label for="icon_my_location">Endereço</label> 
+				<span ng-show="frmPessoa.txtRua.$error.required && frmPessoa.txtRua.$dirty">Nome de rua Obrigatória!</span> 
+				<span ng-show="frmPessoa.txtRua.$error.maxlength">Nome de rua muito grande!</span>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="input-field col s6">
+			 	<i class="material-icons prefix">toc</i>
+			 	<input id="icon_toc" class="validate" type="text" name="numEstb"ng-maxlength="5" ng-model="pessoa.endereco.numero" required />
+				<label for="icon_toc">Número</label> 
+				<span ng-show="frmPessoa.numEstb.$error.required && frmPessoa.numEstb.$dirty">Número Obrigatório!</span> 
+				<span ng-show="frmPessoa.numEstb.$error.maxlength">Número muito Grande!</span>
+			</div>
+			<div class="input-field col s6">
+			 	<i class="material-icons prefix">location_on</i>
+			 	<input id="icon_location_on" class="validate" type="text" name="txtCid" ng-maxlength="15" ng-model="pessoa.endereco.cidade" required />
+				<label for="icon_location_on">Cidade</label> 
+				<span ng-show="frmPessoa.txtCid.$error.required && frmPessoa.txtCid.$dirty">Cidade Obrigatória!</span> 
+				<span ng-show="frmPessoa.txtCid.$error.maxlength">Nome de cidade muito grande!</span>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="input-field col s6">
+			 	<i class="material-icons prefix">trending_down</i>
+			 	<input id="icon_trending_down" class="validate" type="text" name="txtBairro" ng-model="pessoa.endereco.bairro" required />
+				<label for="icon_trendind_down">Bairro</label> 
+				<span ng-show="frmPessoa.txtBairro.$error.required && frmPessoa.txtBairro.$dirty">Bairro Obrigatório!</span> 		
+			</div>
+			<div class="input-field col s6">
+			 	<i class="material-icons prefix">sort_by_alpha</i>
+			 	<input id="icon_sort_by_alpha" class="validate" type="text" name="txtEst" ng-minlength="2" ng-maxlength="2" ng-model="pessoa.endereco.uf" required /> 
+				<label for="icon_sort_by_alpha">Estado</label> 
+				<span ng-show="frmPessoa.txtEst.$error.required && frmPessoa.txtEst.$dirty">Estado Obrigatório!</span> 
+				<span ng-show="frmPessoa.txtEst.$error.minlength">Estado inválido!</span> 
+				<span ng-show="frmPessoa.txtEst.$error.maxlength">Estado inválido!</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+			 	<i class="material-icons prefix">view_list</i>
+			 	<input id="icon_view_list" class="validate" type="text" name="numCep" ng-minlength="8" ng-maxlength="8" ng-model="pessoa.endereco.cep" required /> 
+				<label for="icon_view_list">Cep</label> 
+				<span ng-show="frmPessoa.numCep.$error.required && frmPessoa.numCep.$dirty">Cep Obrigatório!</span> 
+				<span ng-show="frmPessoa.numCep.$error.minlength">Cep pequeno!</span> 
+				<span ng-show="frmPessoa.numCep.$error.maxlength">Cep grande! </span>
+			</div>
+			<div class="input-field col s6">
+			 	<i class="material-icons prefix">view_list</i>
+			 	<input id="icon_view_list" class="validate" type="text" name="pais"   ng-model="pessoa.endereco.cep" required /> 
+				<label for="icon_view_list">País</label> 
+				<span ng-show="frmPessoa.pais.$error.required && frmPessoa.pais.$dirty">País Obrigatório!</span> 
+			</div>
+			
+		</div>
+		<div class="row">
+		<div class="input-field col s6">
+			 	<i class="material-icons prefix">perm_identity</i>
+			 	<input id="icon_perm_identity" class="validate" type="text" name="txtLogin" ng-minlength="6" ng-maxlength="10" ng-model="pessoa.usuario.login" required />
+				<label for="icon_perm_identity">Login</label> 
+				<span ng-show="frmPessoa.txtLogin.$error.required && frmPessoa.txtLogin.$dirty">Login Obrigatorio</span>
+			</div>
+			<div class="input-field col s6">
+			 	<i class="material-icons prefix">lock_outline</i>
+			 	<input id="icon_lock_outline" class="validate" type="password" name="passSenha" ng-minlength="8" ng-maxlength="20" ng-model="pessoa.usuario.senha" required />
+				<label for="icon_lock_outline">Senha</label> 
+				<span ng-show="frmPessoa.passSenha.$error.required && frmPessoa.passSenha.$dirty">Senha Obrigatória!</span> 
+				<span ng-show="frmPessoa.passSenha.$error.minlength">Senha pequena!</span>
+				<span ng-show="frmPessoa.passSenha.$error.maxlength">Senha Grande!</span>
+			</div>
+		
+		
+<!-- 		<label>Perfil:</label>  -->
+<!-- 			<select ng-model="pessoa.perfil.id" ng-controller="perfilController"> -->
+<!-- 				<option  ng-repeat="e in perfis" ng-value="e.id"> {{e.descricao}}</option> -->
+<!-- 			</select> -->
+ 		
+ 		 <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="salvarPessoa()">Salvar
+   		 <i class="material-icons right">send</i> </button>
+   		 <button class="btn waves-effect waves-light" type="cancel" name="action" ng-click="cancelar()" ng-disabled= "frmPessoa.$invalid" >Limpar
+   		 <i class="material-icons right">cancel</i> </button>
+   		 
+<!-- 			<input type="button" value="Salvar"  ng-click="salvarPessoa()"  /> -->
+<!-- 			<input type="button" value="Limpar"  ng-click="cancelar()" ng-disabled= "frmPessoa.$invalid" /> -->
+	</div>
+	
+		<div class="row">
+			<h4>Pessoas Cadastrados</h4>
+			<div class="col s4  offset-s4" style="border:1px solid #EAEAEA">
+				
+				<div ng-repeat="p in pessoas" style="border:0px">
+					
+					<ul class="collection" >
+					<li class="collection-item "><div> {{p.id + '-'+ p.nome}}  <a href="#!" class="secondary-content"  ng-click="excluirPessoa(p.id)"><i class="material-icons">delete</i></a> <a href="#!" class="secondary-content"  ng-click="prepararAlterar(p)"><i class="material-icons">edit</i></a></div></li>
+					</ul>
+<!-- 						<div class="center-btn"> -->
+						
+<!-- 						<a class="waves-effect waves-light "  type="delete" name="action" ng-click="excluirPessoa(cli)"><i class="material-icons right">delete</i>Apagar</a> -->
+<!-- 						<a class="waves-effect waves-light" type="edit" name="action" ng-click="prepararAlterar(cli)"><i class="material-icons right">edit</i>Alterar</a> -->
+<!-- 					<button class="btn waves-effect waves-light" type="delete" name="action" ng-click="excluirPessoa(cli)">Excluir -->
+<!-- 		   		 	<i class="material-icons right">delete</i> </button>  <button class="btn waves-effect waves-light" type="edit" name="action" ng-click="prepararAlterar(cli)">Alterar -->
+<!-- 		   		 	<i class="material-icons right">edit</i> </button>  -->
+<!-- 				 	<a href="pessoas/{{cli.id}}">Detalhes dos Pessoas</a> -->
+			
+			</div>
+		</div>
+	</div>
+
+
+	</form>
+
+
+
+</div>

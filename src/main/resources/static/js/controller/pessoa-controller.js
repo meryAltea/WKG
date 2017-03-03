@@ -1,17 +1,19 @@
-appWkg.controller("pessoaController", function($http, $scope) {
+appUsuario.controller("pessoaController", function($http, $scope) {
 	$scope.pessoa = {};
 	$scope.pessoas = [];
-
-	var mostrarTodos = function() {
-		$http.get("/pessoas").then(function(response) {
-			$scope.pessoas = response.data;
-		}, function(response) {
-			window.alert("Não foi possível buscar os pessoas!!");
-		});
-	};
+	$scope.pessoaFisica=false;
+	$scope.pessoaJuridica=false;
+	
+//	var mostrarTodos = function() {
+//		$http.get("/pessoas").then(function(response) {
+//			$scope.pessoas = response.data;
+//		}, function(response) {
+//			window.alert("Não foi possível buscar os clientes!!");
+//		});
+//	};
 
 	$scope.salvarPessoa = function() {
-		if ($scope.pessoas.id == undefined) {
+		if ($scope.pessoa.id == undefined) {
 			cadastrarPessoa();
 		} else {
 			alterarPessoa();
@@ -47,8 +49,8 @@ appWkg.controller("pessoaController", function($http, $scope) {
 			window.alert("Erro ao alterar!")
 		});
 	};
-	$scope.excluirPessoa= function(id){
-		 if(window.confirm("Tem certeza que deseja excluir?")){
+		excluirPessoa= function (id){
+		if(window.confirm("Tem certeza que deseja excluir?")){
 			$http.delete("/pessoas/"+id ).then (function(){
 				window.alert("Excluído com sucesso!");
 				mostrarTodos();
@@ -63,6 +65,6 @@ appWkg.controller("pessoaController", function($http, $scope) {
 		
 	};
 	
-	mostrarTodos();
+//	mostrarTodos();
 
 });

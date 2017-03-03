@@ -1,8 +1,8 @@
 appWkg.controller("mainCtr", function($scope, $rootScope, $route, $location) {
 	if(localStorage.getItem("userToken")==null){
-		$rootScope.menuLogin="Login";
+		$rootScope.menuLogin="Entrar";
 	}else {
-		$rootScope.menuLogin="Logout";
+		$rootScope.menuLogin="Sair";
 	}
 	$(document).ready(function() {
 		$('.dropdown-button').dropdown();
