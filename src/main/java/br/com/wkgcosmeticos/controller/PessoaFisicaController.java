@@ -20,11 +20,11 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
 @RestController
+
 public class PessoaFisicaController {
 	@Autowired
 	PessoaFisicaService pessoaFisicaService;
-	@Autowired
-	UsuarioService usuarioService;
+
 	@RequestMapping(value = "/pessoasFisica", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public PessoaFisica cadastrar(@RequestBody PessoaFisica pessoaFisica) {
 		return pessoaFisicaService.cadastrar(pessoaFisica);
@@ -49,12 +49,5 @@ public class PessoaFisicaController {
 	public PessoaFisica buscarPorId(@PathVariable Integer id) {
 		return pessoaFisicaService.buscarPorId(id);
 	}
-	@RequestMapping(value = "/pessoasFisica/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public PessoaFisica buscarPorPessoaFisica(@RequestHeader(value="token") String token){
-		
-		Claims claims=Jwts.parser().setSigningKey("banana").parseClaimsJws(token).getBody();
-		Usuario usuario= usuarioService.buscarPorUsername(claims.getSubject());
-		return pessoaFisicaService.buscarPorIdUsuario(usuario.getId());
-		
-	}
+
 }

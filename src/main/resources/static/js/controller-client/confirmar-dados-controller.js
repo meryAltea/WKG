@@ -2,7 +2,7 @@ appWkg.controller("confirmarDadosController", function($scope,$http){
 	$scope.cliente={};
 	$scope.confirmarEndereco=false;
 	$scope.atualizarCadastro=false;
-		$http.get("/clientes/", {
+		$http.get("/buscarPorPessoas/", {
 			headers:{
 				"token":localStorage.getItem("userToken")
 				}

@@ -39,8 +39,6 @@ public class PessoaFisicaService {
 	public PessoaFisica buscarPorId(Integer id) {
 		return pessoaFisicaRepository.findOne(id);
 	}
-	public PessoaFisica buscarPorIdUsuario(Integer id) {
-		return pessoaFisicaRepository.buscarPorIdUsuario(id);
-	}
+	
 
 }

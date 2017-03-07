@@ -10,6 +10,5 @@ import br.com.wkgcosmeticos.entidades.PessoaFisica;
 
 @Repository
 public interface PessoaFisicaRepository extends JpaRepository<PessoaFisica, Integer> {
-	@Query("select p from PessoaFisica p where p.usuario.id=:usuarioid")
-	PessoaFisica buscarPorIdUsuario(@Param("usuarioid") Integer id);
+	
 }
