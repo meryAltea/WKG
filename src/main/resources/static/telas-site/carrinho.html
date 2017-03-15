@@ -1,23 +1,42 @@
-<div ng-repeat="produto in carrinho ">
-	{{produto.id + '-' + produto.nome}} {{produto.preco}}
-	{{produto.quantidade*produto.preco}}
+<div class="container">
+	
+	<table class="responsive-table">
+        <thead>
+          <tr>
+              <th data-field="id">Item</th>
+              <th data-field="name">Preço</th>
+              <th data-field="price">Subtotal</th>
+              <th>Quantidade</th>
+             
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="produto in carrinho">
+            <td>{{produto.nome}}</td>
+            <td>{{produto.preco}}</td>
+            <td>{{produto.quantidade*produto.preco}}</td>
+        	
+	        	<td  style="width:10%;">
+			<input type="number" name="quantidade" 
+				ng-change="calcularACompra()" ng-model=produto.quantidade required
+				style="display: inline-block;" /> <a href="#!"
+				class="secondary-content" ng-click="removerItemCarrinho($index)">
+				<i class="material-icons">delete</i></a></td>
+			
+          </tr>
+ 		
+        </tbody>
+      </table> 
+	
 
 
-	<p class="teal-text">
-		Quantidade:<input type="text" name="quantidade"
-			ng-blur="calcularTotal()" ng-model=produto.quantidade required
-			style="display: inline-block;" /> <a href="#!"
-			class="secondary-content" ng-click="removerItemCarrinho($index)">
-			<i class="material-icons">delete</i>
-		</a>
+	
 		
 </div>
 <div>
-<!-- INICIO CODIGO PAGSEGURO -->
-<a href="https://pagseguro.uol.com.br/desenvolvedor/simulador_de_frete.jhtml?CepOrigem=18277210&amp;Peso=2&amp;Valor=25,00" id="ps_freight_simulator" target="_blank"><img src="https://p.simg.uol.com.br/out/pagseguro/i/user/imgCalculoFrete.gif" id="imgCalculoFrete" alt="Cálculo automático de frete" border="0" /></a>
-<script type="text/javascript" src="https://p.simg.uol.com.br/out/pagseguro/j/simulador_de_frete.js"></script>
-<!-- FINAL CODIGO PAGSEGURO -->
-total:{{totalDaCompra}}</div>
+Frete: {{valorDoFrete}}
+Total:{{valorTotal}}</div>
 <div>
 	<button class="btn waves-effect waves-light" type="submit"
 		name="action" ng-click="verificarUsuario()">

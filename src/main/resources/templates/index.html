@@ -24,10 +24,10 @@
 <script src="./js/app-site.js"></script>
 <script src="./js/controller-client/main-controller.js"></script>
 <script src="./js/controller-client/login-controller.js"></script>
+<script src="./js/controller-client/pessoa-controller.js"></script>
 <script src="./js/controller-client/confirmar-dados-controller.js"></script>
 <script src="./js/controller-client/produto-controller.js"></script>
 <script src="./js/controller-client/detalhes-controller.js"></script>
-<script src="./js/controller-client/cliente-controller.js"></script>
 <script src="./js/controller-client/carrinho-controller.js"></script>
 <script src="./js/factory/carrinho-factory.js"></script>
 
@@ -36,13 +36,13 @@
 
 </head>
 <body ng-controller="mainCtr">
-<div class="navbar-fixed">
+<div class="container">
 	<nav>
-		<div class="nav-wrapper" style="text-align:right;">
-			<a class="btn-floating btn-medium waves-effect waves-light teal" href="/carrinho"><i class="material-icons" >shopping_cart</i></a>
-			
+		<div class="nav-wrapper" style="text-align:right; margin-right:-200px;">
+			<a class="btn-medium" href="/carrinho" style="background-color:transparent; box-shadow:none;"><i class="material-icons" >shopping_cart</i></a>
+			<a> {{mostrarQuantItens}}</a>
 			<a href="/login">{{menuLogin}}</a>
-			<a href="/cliente">Cadastre-se</a>
+			<a href="/pessoas">Cadastre-se</a>
 			
 		</div>
 	</nav>
@@ -50,7 +50,7 @@
 <!-- 		<div class="card-panel teal accent-4" style="text-align:right;"> -->
 <!-- 		<li><a href="/login" >Entrar</a></li> -->
 <!-- 		</div> -->
-	<div class="navbar-fixed">
+	<div class="container">
 		<ul id="dropdown1" class="dropdown-content">
 			<li><a href="/escovista">Escovista Profissional</a></li>
 			<li class="divider"></li>
@@ -59,20 +59,21 @@
 			<li><a href="#!">three</a></li>
 		</ul>
 		<nav>
-			<div class="nav-wrapper">
-				<a href="#" class="brand-logo right">Wkg Cosméticos </a> <a href="#"
+			<div class="nav-wrapper" style="margin-left:150px;">
+			
+				<a href="#" class="brand-logo right"></a> <a href="#"
 					data-activates="mobile-demo" class="button-collapse"><i
 					class="material-icons">menu</i></a>
 
 				<ul id="nav-mobile" class="left hide-on-med-and-down">
-					<li><a href="/">Home</a></li>
-					<li><a href="/empresa">Quem somos</a></li>
-					<li><a href="/produtos">Loja Online</a></li>
+					<li><a href="/">HOME</a></li>
+					<li><a href="/empresa">QUEM SOMOS</a></li>
+					<li><a href="/produtos">LOJA ONLINE</a></li>
 					<li><a class="dropdown-button " href="#!"
-						data-activates="dropdown1" data-hover="true">Cursos</a><i
+						data-activates="dropdown1" data-hover="true">PRODUTOS</a><i
 						class="mdi-navigation-arrow-drop-down right"></i></li>
-					<li><a href="/trabalheconosco">Trabalhe Conosco</a></li>
-					<li><a href="/contato">Contato</a></li>
+					<li><a href="/trabalheconosco">TRABALHE CONOSCO</a></li>
+					<li><a href="/contato">CONTATO</a></li>
 					
 					
 				</ul>
@@ -83,9 +84,11 @@
 					<li><a href="collapsible.html">Javascript</a></li>
 					<li><a href="mobile.html">Mobile</a></li>
 				</ul>
-			</div>
+				</div>
+			
 		</nav>
-	</div>
+		</div>
+	
 	<!-- 	<div class="container"> -->
 	<!-- 		<div class="row"> -->
 	<!-- 			<div class="col s12"> -->

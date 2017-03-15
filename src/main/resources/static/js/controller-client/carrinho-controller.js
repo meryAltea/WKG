@@ -8,14 +8,17 @@ appWkg.controller("carrinhoController", function($scope, carrinhoFactory,
 		$scope.carrinho.splice(indiceDoProduto, 1);
 
 	};
-	$scope.calcularTotal = function() {
-		$scope.totalDaCompra = 0;
-		for (var i = 0; i < $scope.carrinho.length; i++) {
-			$scope.totalDaCompra += $scope.carrinho[i].preco
-					* $scope.carrinho[i].quantidade;
 
-		}
-	}
+
+	$scope.calcularACompra= function(){
+		
+		$scope.valorDaCompra=carrinhoFactory.calcularCompra();
+		$scope.valorDoFrete= carrinhoFactory.calcularFrete();
+		$scope.valorTotal= carrinhoFactory.calcularTotalDaCompra();
+	};
+
+	$scope.calcularACompra();
+	
 	$scope.verificarUsuario = function() {
 
 		if (localStorage.getItem("userToken") != null) {
@@ -25,6 +28,6 @@ appWkg.controller("carrinhoController", function($scope, carrinhoFactory,
 			$location.path('/login');
 		}
 	};
-	$scope.calcularTotal();
 
+	
 });

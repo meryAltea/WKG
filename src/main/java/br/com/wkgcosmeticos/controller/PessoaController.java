@@ -38,7 +38,7 @@ public class PessoaController {
 	public Collection<Pessoa> buscarTodos() {
 		return pessoaService.buscarTodos();
 	}
-	@RequestMapping(value = "/buscarPessoas", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/pessoas/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes= MediaType.APPLICATION_JSON_VALUE)
 	public Pessoa buscarPorPessoa(@RequestHeader(value="token") String token){
 		
 		Claims claims=Jwts.parser().setSigningKey("banana").parseClaimsJws(token).getBody();

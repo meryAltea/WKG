@@ -1,4 +1,11 @@
-appWkg.controller("mainCtr", function($scope, $rootScope, $route, $location) {
+appWkg.controller("mainCtr", function($scope, $rootScope, $route, $location, $interval, carrinhoFactory) {
+	
+	$interval(function(){
+		
+		$scope.mostrarQuantItens=carrinhoFactory.getQuantidadeDeItens();
+		console.log($scope.mostrarQuantItens);
+	}, 2000);
+	
 	if(localStorage.getItem("userToken")==null){
 		$rootScope.menuLogin="Entrar";
 	}else {

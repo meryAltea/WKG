@@ -1,5 +1,6 @@
-<div>
-		
+<div class="container">
+		<div class="card-title">CONFIRMAÇÃO DOS DADOS</div>
+		<p class="light-green-text lighten-1" style="text-alight:right; font-size:14px;"> Dados do Cliente</p>
 		<input ng-model="pessoa.nome" ng-disabled="!atualizarCadastro"/>
 		<input type="checkbox" id="atualizar" ng-model="atualizarCadastro" ng-checked="atualizarCadastro" />
       		<label for="atualizar"> Deseja atualizar seu cadastro?</label>
@@ -23,7 +24,43 @@
 			<input ng-model="endereco.bairro"/>
 			<input ng-model="endereco.cep"/>
 		</div>
+		<p class="light-green-text lighten-1" style="text-alight:right; font-size:14px;"> Dados do Pedido</p>	
+	
+	<table class="responsive-table">
+        <thead>
+          <tr>
+              <th data-field="id">Item</th>
+              <th data-field="name">Preço</th>
+              <th>Quantidade</th>
+              <th>Frete</th>
+              <th data-field="price">Total da Compra</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="produto in carrinho">
+            <td>{{produto.nome}}</td>
+            <td>{{produto.preco}}</td>
+            <td>{{produto.quantidade}}</td>
+            <td>{{valorDoFrete}}</td>
+        	<td>{{produto.quantidade*produto.preco+totalFrete}}</td>
+
+			
+          </tr>
+ 		
+        </tbody>
+      </table> 
+	<div>
+	<button class="btn waves-effect waves-light" type="submit"
+		name="action" ng-click="salvarPedido()">
+		Finalizar Pedido <i class="material-icons right">send</i>
+	</button>
+</div>
+
+
+	
 		
+
 		
 	
 

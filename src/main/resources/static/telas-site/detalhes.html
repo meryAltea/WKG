@@ -10,9 +10,10 @@
 	<p class="teal-text"> Linha:{{produtos[produtoId-1].linha}}</p>
 	<p class="teal-text"> Descrição:{{produtos[produtoId-1].descricao}}</p>
 	<p class="teal-text"> {{"R$"+produtos[produtoId-1].preco}}</p>
+	<p class="teal-text"> Quantidade/estoque:{{produtos[produtoId-1].quantidade}}</p>
 	<div class="block" style="display:inline-block;" >
-	<p class="teal-text">Quantidade:<input id="quantidade"  type="text" name="quantidade" ng-model=pedido.quantidade 
-				required style="display:inline-block;"/>
+<!-- 	<p class="teal-text">Quantidade:<input id="quantidade"  type="text" name="quantidade" ng-model=pedido.quantidade  -->
+<!-- 				required style="display:inline-block;"/> -->
 	
 	<button class="btn waves-effect waves-light" type="submit" ng-click="adicionar()" name="action">Adicionar no Carrinho
    		 <i class="material-icons right">send</i> </button>

@@ -17,9 +17,9 @@ $routeProvider
 }).when("/carrinho", {
 	templateUrl : 'telas-site/carrinho.html',
 	controller : 'carrinhoController'
-}).when("/cliente", {
-	templateUrl : 'telas-site/cliente.html',
-	controller : 'clienteController'
+}).when("/pessoas", {
+	templateUrl : 'telas-site/pessoa.html',
+	controller : 'pessoaController'
 }).when("/confirmarDados", {
 	templateUrl : 'telas-site/confirmar-dados-pessoais.html',
 	controller : 'confirmarDadosController'

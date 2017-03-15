@@ -5,10 +5,11 @@ import javax.persistence.Embeddable;
 
 import lombok.Data;
 
+import java.io.Serializable;
 @Data
 @Embeddable
 
-public class Endereco {
+public class Endereco implements Serializable{
 	@Column(nullable = false, length = 20)
 	private String pais;
 	@Column(nullable = false, length = 50)
