@@ -32,6 +32,9 @@ $routeProvider
 }).when("/upload/:produtoId", {
 	templateUrl : 'telas/upload.html',
 	controller : 'fileController'
+}).when("/pedidos", {
+	templateUrl : 'telas/pedido.html',
+	controller : 'pedidoController'
 }).otherwise({
 	rediretTo : '/'
 });		

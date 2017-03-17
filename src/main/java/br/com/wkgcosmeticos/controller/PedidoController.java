@@ -15,6 +15,7 @@ import br.com.wkgcosmeticos.entidades.Pedido;
 import br.com.wkgcosmeticos.service.PedidoService;
 
 @RestController
+@RequestMapping(value="/admin")
 public class PedidoController {
 	@Autowired 
 	PedidoService pedidoService;

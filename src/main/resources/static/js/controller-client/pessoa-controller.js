@@ -33,7 +33,6 @@ appWkg.controller("pessoaController", function($http, $scope) {
 		if ($scope.frmPessoa.$valid) {
 			$http.post(url, $scope.pessoa).then(function(response) {
 				window.alert("Cadastrado com Sucesso!");
-				mostrarTodos();
 				$scope.cancelar();
 			}, function(response) {
 				window.alert("Não foi possível cadastrar!!");
