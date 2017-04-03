@@ -35,7 +35,7 @@ appUsuario.controller("perfilController", function($scope, $http) {
 		$scope.perfil=angular.copy(u);
 		$scope.alterarPerfil();
 	};
-	$scope.excluirPerfil= function(p){
+	$scope.excluirPerfil= function(id){
 		$http.delete("/admin/perfis/"+id).then(function(response){
 			$scope.mostrarTodos();
 			

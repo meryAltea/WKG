@@ -48,7 +48,7 @@ appWkg.factory('carrinhoFactory', function() {
 					* carrinho[i].quantidade;
 
 		}
-		return totalDaCompra;
+		return totalDaCompra.toFixed(2);
 	};
 	carrinho.calcularFrete=function(){
 		
@@ -57,7 +57,7 @@ appWkg.factory('carrinhoFactory', function() {
 	};
 	carrinho.calcularTotalDaCompra=function(){
 		total=totalFrete+totalDaCompra;
-		return total;
+		return total.toFixed(2);
 	};
 	
 	

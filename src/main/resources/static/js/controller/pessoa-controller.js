@@ -10,12 +10,14 @@ appUsuario.controller("pessoaController", function($http, $scope) {
 		$scope.pessoaFisica=true;
 		$scope.pessoaJuridica=false;
 		$scope.tipoDePessoa=false;
+		$scope.pessoa.tipoDePessoa="fisica";
 		url="/pessoasFisica";
 	}
 	$scope.pj=function(){
 		$scope.pessoaJuridica=true;
 		$scope.pessoaFisica=false;
 		$scope.tipoDePessoa=true;
+		$scope.pessoa.tipoDePessoa="juridica";
 		url="/pessoasJuridica";
 	}
 	var mostrarTodos = function() {

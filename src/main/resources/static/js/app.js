@@ -35,6 +35,9 @@ $routeProvider
 }).when("/pedidos", {
 	templateUrl : 'telas/pedido.html',
 	controller : 'pedidoController'
+}).when("/pedidos/detalhes", {
+	templateUrl : 'telas/detalhesPedido.html',
+	controller : 'pedidoDetalhesController'
 }).otherwise({
 	rediretTo : '/'
 });		

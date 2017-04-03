@@ -18,5 +18,6 @@ public class PessoaJuridica extends Pessoa {
 	private String inscricaoEstadual;
 	@Column(nullable = true, unique = true)
 	private String inscricaoMunicipal;
+	
 
 }

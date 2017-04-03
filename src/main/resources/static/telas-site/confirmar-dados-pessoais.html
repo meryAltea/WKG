@@ -1,28 +1,47 @@
 <div class="container">
 		<div class="card-title">CONFIRMAÇÃO DOS DADOS</div>
 		<p class="light-green-text lighten-1" style="text-alight:right; font-size:14px;"> Dados do Cliente</p>
-		<input ng-model="pessoa.nome" ng-disabled="!atualizarCadastro"/>
 		<input type="checkbox" id="atualizar" ng-model="atualizarCadastro" ng-checked="atualizarCadastro" />
       		<label for="atualizar"> Deseja atualizar seu cadastro?</label>
+		<div ng-show="tipoDePessoa=='fisica'">
+		<input ng-model="pessoa.nome" ng-disabled="!atualizarCadastro"/>
+		
 		<input ng-model="pessoa.cpf" ng-disabled="!atualizarCadastro"/>
 		<input ng-model="pessoa.rg" ng-disabled="!atualizarCadastro"/>
+		</div>
+		
+		
+		<div ng-show="tipoDePessoa=='juridica'">
+		<input ng-model="pessoa.razaoSocial" ng-disabled="!atualizarCadastro"/>
+		<input ng-model="pessoa.inscricaoEstadual" ng-disabled="!atualizarCadastro"/>
+		<input ng-model="pessoa.inscricaoMunicipal" ng-disabled="!atualizarCadastro"/>
+		<input ng-model="pessoa.cnpj" ng-disabled="!atualizarCadastro"/>
+		</div>
+		
 		<input ng-model="pessoa.tel" ng-disabled="!atualizarCadastro"/>
 		<input ng-model="pessoa.cel" ng-disabled="!atualizarCadastro"/>
 		<input ng-model="pessoa.email" ng-disabled="!atualizarCadastro"/>
 		<input type="checkbox" id="test5" ng-model="confirmarEndereco" ng-checked="confirmarEndereco" />
       		<label for="test5"> Deseja informar outro endereço para entrega?</label>
+      		{{confirmarEndereco}}
+      		{{!confirmarEndereco}}
 		<div ng-show="!confirmarEndereco">
 			<input ng-model="pessoa.endereco.rua" ng-disabled="!atualizarCadastro"/>
 			<input ng-model="pessoa.endereco.numero" ng-disabled="!atualizarCadastro"/>
 			<input ng-model="pessoa.endereco.cidade" ng-disabled="!atualizarCadastro"/>
 			<input ng-model="pessoa.endereco.bairro" ng-disabled="!atualizarCadastro"/>
+			<input ng-model="pessoa.endereco.uf" ng-disabled="!atualizarCadastro"/>
 			<input ng-model="pessoa.endereco.cep" ng-disabled="!atualizarCadastro"/>
+			<input ng-model="pessoa.endereco.pais" ng-disabled="!atualizarCadastro"/>
 		</div>
 		<div ng-show="confirmarEndereco">
-			<input ng-model="endereco.numero"/>
-			<input ng-model="endereco.cidade"/>
-			<input ng-model="endereco.bairro"/>
-			<input ng-model="endereco.cep"/>
+			<input ng-model="pedido.enderecoDeEntrega.rua"/>
+			<input ng-model="pedido.enderecoDeEntrega.numero"/>
+			<input ng-model="pedido.enderecoDeEntrega.cidade"/>
+			<input ng-model="pedido.enderecoDeEntrega.bairro"/>
+			<input ng-model="pedido.enderecoDeEntrega.uf"/>
+			<input ng-model="pedido.enderecoDeEntrega.cep"/>
+			<input ng-model="pedido.enderecoDeEntrega.pais"/>
 		</div>
 		<p class="light-green-text lighten-1" style="text-alight:right; font-size:14px;"> Dados do Pedido</p>	
 	

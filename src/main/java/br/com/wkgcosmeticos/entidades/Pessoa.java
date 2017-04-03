@@ -42,5 +42,7 @@ public class Pessoa implements Serializable {
 	private String cel;
 	@Column(nullable = false, length = 20)
 	private String email;
+	@Column
+	private String tipoDePessoa;
 
 }

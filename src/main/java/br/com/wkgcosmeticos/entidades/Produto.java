@@ -38,22 +38,13 @@ public class Produto {
 	@Column 
 	private float preco;
 	@Column
-	private Integer quantidade;
+	private Integer quantidadeDisponivel;
+	@Column
+	private Integer quantidadeReservada;
 //	@NotNull
 	@OneToMany (mappedBy="produto")
 	private List<FileUpload> fotos;
-//	@Column(nullable=false)
-//	BigDecimal p = new BigDecimal("1220.00");
-//	NumberFormat nf= NumberFormat.getCurrencyInstance();
-//	String s= nf.format(p);
-//	
-//	public void adicionarFoto(FileUpload fileUpload) {
-//		if(fotos==null){
-//			fotos=new ArrayList<>();
-//		}
-//		fotos.add(fileUpload);
-//		
-//	}
+	private boolean statusNaLoja;
 
 	
 	

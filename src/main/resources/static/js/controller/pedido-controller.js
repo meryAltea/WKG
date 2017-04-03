@@ -1,51 +1,59 @@
-appUsuario.controller("pedidoController", function($http, $scope){
+appUsuario.controller("pedidoController", function($http, $scope,$location, pedidoFactory){
 	$scope.pedido={};
 	$scope.pedidos=[];
+	$scope.tipoDePessoa={};
+	$scope.pessoa={};
+	$scope.status=false;
+	
+	console.log("status"+$scope.status);
+	console.log("status com negação"+!$scope.status);
 	
 	var mostrarTodos= function(){
-		$http.get("/admin/pedidos").then (function(response){
+		$http.get("/pedidos").then (function(response){
+			
 			$scope.pedidos=response.data;
+
 			}, function(response){	
 				window.alert("Erro!!");
 			});	
 	};
 	
-	$scope.salvarPedido = function() {
-		if ($scope.pedido.id == undefined) {
-			$scope.cadastrarPedido();
-		} else {
-			$scope.alterarPedido();
-		}
-
+	$scope.mostrarPedido=function(pedidoSelecionado){
+		pedidoFactory.armazenarPedido(pedidoSelecionado);
+		$location.path("/pedidos/detalhes");
+		
 	};
+	
+
+
 
 	$scope.cadastrarPedido = function() {
 //		if ($scope.frmAssociado.$valid) {
-			$http.post("/admin/pedidos", $scope.associado).then(function(response) {
-				window.alert("Cadastrado com Sucesso!");
+			$http.post("/pedidos", $scope.pedido).then(function(response) {
+				window.alert("Alterado com Sucesso!");
 				mostrarTodos();
 				$scope.cancelar();
 			}, function(response) {
-				window.alert("Não foi possível cadastrar!!");
+				window.alert("Não foi possível alterar!!");
 			});
 //		} else {
 //			window.alert("Dados inválidos!");
 //		}
 	};
-
-	$scope.prepararAlterar = function(p) {
-		$scope.pedido = angular.copy(p);
-
-	};
-
-	$scope.alterarPedido = function() {
-		$http.put("/admin/pedidos").then(function(response) {
+	$scope.alterarPedido = function(ped) {
+		$http.put("/pedidos", ped ).then(function(response) {
 			window.alert("Alterado com sucesso!");
 			mostrarTodos();
 			$scope.cancelar();
 		}, function(response) {
 			window.alert("Erro ao alterar!")
 		});
+	};
+
+
+	$scope.editarStatus = function() {
+		$scope.status=true;
+		alert("Editar status");
 	};
 	$scope.excluirPedido= function(){
 		 if(window.confirm("Tem certeza que deseja excluir?")){

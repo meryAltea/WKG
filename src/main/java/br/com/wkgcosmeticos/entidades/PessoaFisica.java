@@ -25,5 +25,6 @@ public class PessoaFisica extends Pessoa {
 	private String cpf;
 	@Column(nullable = false, unique = true, length = 9)
 	private String rg;
+	
 
 }

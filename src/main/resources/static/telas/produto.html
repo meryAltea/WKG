@@ -19,19 +19,8 @@
 					required /> <label for="nome">Nome</label> <span
 					ng-show="frmProduto.nome.$error.required && frmProduto.nome.$dirty">Nome
 					Obrigatório</span>
-
 			</div>
 		</div>
-
-		<!-- 	<div > -->
-		<!-- 		<md-input-container> -->
-		<!-- 		<label>Categoria</label> -->
-		<!-- 		<md-select ng-model="produto.categoria.id" ng-controller="categoriaController"> -->
-		<!-- 		<md-option disabled selected></md-option>  -->
-		<!-- 		<md-option ng-repeat="c in categorias" ng-value="c.descricao" >{{c.descricao}}</md-option> -->
-		<!-- 		</md-select> -->
-		<!-- 		</md-input-container> -->
-		<!-- 		</div> -->
 		<div class="row">
 			<div class="input-field col s4 offset-s4">
 
@@ -42,19 +31,6 @@
 						{{c.descricao}}</option>
 				</select>
 			</div>
-
-
-			<!-- 				  <div class="row"> -->
-			<!-- 				  <div class="mdl-selectfield col s4 offset-s4"> -->
-
-			<!--     <select class="browser-default" ng-model="produto.categoria.id" ng-controller="categoriaController"> -->
-			<!--       <option value="" disabled selected>Categoria</option> -->
-			<!-- 	  <option ng-repeat="c in categorias" ng-value="c.id"> {{c.descricao}}</option> -->
-			<!--     </select> -->
-			<!--   </div> -->
-			<!--   </div> -->
-
-
 			<div class="input-field col s4 offset-s4">
 
 				<input id="linha" type="text" name="txtLinha"
@@ -62,8 +38,6 @@
 				<span
 					ng-show="frmProduto.txtLinha.$error.required && frmProduto.txtCodigo.$dirty">Linha
 					Obrigatoria!</span>
-
-
 			</div>
 		</div>
 		<div class="row">
@@ -73,21 +47,19 @@
 				<span
 					ng-show="frmProduto.descricao.$error.required && frmProduto.descricao.$dirty">Descrição
 					Obrigatória</span>
-
 			</div>
-
 			<div class="input-field col s4 offset-s4">
 
 				<input id="quantidade" type="number" name="quantidade"
-					ng-model="produto.quantidade" required />
+					ng-model="produto.quantidadeDisponivel" required />
 
-				<label for="preco">Quantidade</label> <span
+				<label for="quantidade">Quantidade</label> <span
 					ng-show="frmProduto.quantidade.$error.required && frmProduto.quantidade.$dirty">Preço
 					Obrigatorio!</span>
 
 			</div>
 		</div>
-			<div class="row">
+		<div class="row">
 			<div class="input-field col s4 offset-s4">
 				<input id="preco" type="text" name="txtPreco"
 					ng-model="produto.preco" required /> <label for="preco">Preço</label>
@@ -95,9 +67,10 @@
 				<span
 					ng-show="frmProduto.preco.$error.required && frmProduto.preco.$dirty">Descrição
 					Obrigatória</span>
-
+			<input type="checkbox" id="test5" ng-model="produto.statusNaLoja" ng-checked="produto.statusNaLoja" />
+      		<label for="test5"> Ativar esse produto na loja</label>		
 			</div>
-			</div>
+		</div>
 
 		<div class="row">
 			<div class="input-field col s12">

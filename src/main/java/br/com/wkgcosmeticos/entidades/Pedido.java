@@ -1,9 +1,12 @@
 package br.com.wkgcosmeticos.entidades;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,9 +30,22 @@ public class Pedido implements Serializable{
 	@ManyToMany( fetch = FetchType.EAGER)
     @JoinColumn(name="produto_id")
 	private List<Produto> produtos;
-	private Date data = new Date(System.currentTimeMillis());
+	private String data=converterData();
+	private String status;
+	@Embedded
+	private Endereco enderecoDeEntrega;
 
 //private String tipoDePagamento;
 
- 
+	private String converterData(){
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date data = new Date();
+		String resultado="";
+		//			data = sdf.parse("27/07/2006");
+		 resultado= sdf.format(data);
+		
+		return resultado;
+	}
+	
 }

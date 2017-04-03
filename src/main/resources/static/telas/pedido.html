@@ -6,14 +6,33 @@
 				<div ng-repeat="ped in pedidos">
 
 					<ul class="collection">
-						<li class="collection-item "><div>
-								{{ped.id + '-'+ ped.pessoa.nome +'-' + ped.data}} <a href="#!"
-									class="secondary-content" ng-click="excluirPedido(ped.id)">
-									<i class="material-icons">delete</i>
-								</a> <a href="#!" class="secondary-content"
-									ng-click="preparaAlterar(ped)"> <i class="material-icons">edit</i></a>
+						<li class="collection-item ">
+							<div ng-show="ped.pessoa.tipoDePessoa=='fisica'">
+								{{ped.id + '-'+ ped.pessoa.nome +'-' + ped.data +'-' + ped.status}} 
+							
+								<a href="#!" class="secondary-content" ng-click="mostrarPedido(ped)">
+								<i class="material-icons">reorder</i>
+								</a> 
+								<a href="#!" class="secondary-content"
+									ng-click="editarStatus()"> <i class="material-icons">edit</i>
+								</a>
 									
-							</div></li>
+							</div>
+							<div ng-show="ped.pessoa.tipoDePessoa=='juridica'">
+								{{ped.id + '-'+ ped.pessoa.razaoSocial +'-' + ped.data +'-' + ped.status}}
+								<a href="#!" class="secondary-content" ng-click="mostrarPedido(ped)">
+								<i class="material-icons">reorder</i>
+								</a> 
+								<a href="#!" class="secondary-content"
+									ng-click="editarStatus()"> <i class="material-icons">edit</i>
+								</a>							
+							</div>
+							<div ng-show="status">
+							<input ng-model="ped.status" />
+								<button class="btn waves-effect waves-light" type="submit" ng-click="alterarPedido(ped)" name="action">Salvar
+   		 						<i class="material-icons right">send</i> </button>
+							</div>
+							</li>
 					</ul>
 				</div>
 			</div>

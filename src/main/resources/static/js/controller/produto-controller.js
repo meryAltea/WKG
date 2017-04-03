@@ -1,19 +1,8 @@
 appUsuario.controller("produtoController", function($scope, $http){
 	$scope.produto={};
 	$scope.produtos=[];
+	$scope.produto.statusNaLoja=false;
 	
-//	var valor= document.getElementById("preco");
-//	var result='';
-//	$scope.preco='';
-//	
-//	$scope.moeda=function(){
-//		result=$scope.preco;
-//		console.log=(result);
-//	}
-//	var moeda =function(valor){
-//	 valor=+valor.length;
-//	 resultado=valor;
-//	}
 	var mostrarTodos = function() {
 		$http.get("/admin/produtos").then(function(response) {
 			$scope.produtos = response.data;
@@ -48,13 +37,14 @@ appUsuario.controller("produtoController", function($scope, $http){
 	//	}
 	};
 
-	$scope.preparaAlterar = function(f) {
-		$scope.produto = angular.copy(f);
+	$scope.preparaAlterar = function(produto) {
 
+		 $scope.produto = angular.copy(produto);
+		
 	};
 
 	alterarProduto = function() {
-		$http.put("/admin/produtos").then(function(response) {
+		$http.put("/admin/produtos", $scope.produto).then(function(response) {
 			window.alert("Alterado com sucesso!");
 			mostrarTodos();
 			$scope.cancelar();
@@ -63,7 +53,7 @@ appUsuario.controller("produtoController", function($scope, $http){
 		});
 	};
 	$scope.excluirProduto= function(id){
-		 if(window.confirm("Tem certeza que deseja excluir?")){
+//		 if(window.confirm("Tem certeza que deseja excluir?")){
 			$http.delete("/admin/produtos/"+id ).then (function(){
 				window.alert("Excluído com sucesso!");
 				mostrarTodos();
@@ -71,7 +61,7 @@ appUsuario.controller("produtoController", function($scope, $http){
 			}, function(){
 				window.alert("Não foi possível excluir!")
 			});
-		 }
+//		 }
 	};
 	$scope.cancelar= function(){
 		$scope.produto={};

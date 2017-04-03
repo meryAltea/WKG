@@ -1,12 +1,10 @@
 package br.com.wkgcosmeticos.service;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.wkgcosmeticos.entidades.FileUpload;
 import br.com.wkgcosmeticos.entidades.Produto;
 import br.com.wkgcosmeticos.repository.FileUploadRepository;
 import br.com.wkgcosmeticos.repository.ProdutoRepository;
