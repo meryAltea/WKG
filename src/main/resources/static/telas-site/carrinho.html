@@ -15,11 +15,11 @@
           <tr ng-repeat="produto in carrinho">
             <td>{{produto.nome}}</td>
             <td>{{produto.preco}}</td>
-            <td>{{produto.quantidade*produto.preco}}</td>
+            <td>{{produto.quantidadeNoCarrinho*produto.preco}}</td>
         	
 	        	<td  style="width:10%;">
 			<input type="number" name="quantidade" 
-				ng-change="calcularACompra()" ng-model=produto.quantidade required
+				ng-change="calcularACompra()" ng-model=produto.quantidadeNoCarrinho required
 				style="display: inline-block;" /> <a href="#!"
 				class="secondary-content" ng-click="removerItemCarrinho($index)">
 				<i class="material-icons">delete</i></a></td>

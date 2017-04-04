@@ -38,7 +38,9 @@ public class Produto {
 	@Column 
 	private float preco;
 	@Column
-	private Integer quantidadeDisponivel;
+	private Integer quantidadeNoCarrinho;
+	@Column
+	private Integer quantidadeDisponivelParaCompra;
 	@Column
 	private Integer quantidadeReservada;
 //	@NotNull

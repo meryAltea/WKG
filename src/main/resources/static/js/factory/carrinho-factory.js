@@ -15,7 +15,7 @@ appWkg.factory('carrinhoFactory', function() {
 		} 
 		
 		if (contemProdutoSelecionado == false) {
-			produtoSelecionado.quantidade = 1;
+			produtoSelecionado.quantidadeNoCarrinho = 1;
 			carrinho.push(produtoSelecionado);
 			console.log("Novo item");
 			
@@ -25,7 +25,7 @@ appWkg.factory('carrinhoFactory', function() {
 	var incrementaQuantidadeNoCarrinhoDo=function(produtoSelecionado){
 		for (var i = 0; i < carrinho.length; i++) {
 			if (carrinho[i].id == produtoSelecionado.id) {
-				carrinho[i].quantidade = carrinho[i].quantidade + 1;
+				carrinho[i].quantidadeNoCarrinho = carrinho[i].quantidadeNoCarrinho + 1;
 				console.log(carrinho);
 				console.log("Repetida inserção");
 				contemProdutoSelecionado = true;
@@ -36,7 +36,7 @@ appWkg.factory('carrinhoFactory', function() {
 	var calcularTotalDeItensNoCarrinho= function(){
 		quantidadeDeItens=0;
 		for(var i=0; i<carrinho.length;i++){
-		quantidadeDeItens+=carrinho[i].quantidade;
+		quantidadeDeItens+=carrinho[i].quantidadeNoCarrinho;
 		}
 		return quantidadeDeItens;
 	};
@@ -45,7 +45,7 @@ appWkg.factory('carrinhoFactory', function() {
 		totalDaCompra=0;
 		for (var i = 0; i <carrinho.length; i++) {
 			totalDaCompra += carrinho[i].preco
-					* carrinho[i].quantidade;
+					* carrinho[i].quantidadeNoCarrinho;
 
 		}
 		return totalDaCompra.toFixed(2);

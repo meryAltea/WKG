@@ -1,7 +1,7 @@
 appWkg.controller("carrinhoController", function($scope, carrinhoFactory,
 		$location, $http) {
 	$scope.produtos=[];
-	var contemQuantDisponivel=false;
+
 	$scope.carrinho = carrinhoFactory.getCarrinho();
 
 	$scope.removerItemCarrinho = function(indiceDoProduto) {
@@ -22,7 +22,7 @@ appWkg.controller("carrinhoController", function($scope, carrinhoFactory,
 	
 	$scope.verificarQuantidadeDisponivel= function(){
 		for(var i=0; i<$scope.carrinho.length; i++){
-			 if($scope.carrinho[i].quantidade>$scope.carrinho[i].quantidadeDisponivel){
+			 if($scope.carrinho[i].quantidadeNoCarrinho>$scope.carrinho[i].quantidadeDisponivelParaCompra){
 				window.alert("Não tem a quantidade disponível do "+ $scope.carrinho[i].nome + "!");
 				return;			
 			 } 

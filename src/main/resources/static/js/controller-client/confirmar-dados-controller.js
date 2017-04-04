@@ -1,5 +1,6 @@
 appWkg.controller("confirmarDadosController", function($scope,$http, carrinhoFactory){
 
+	$scope.produtoNoCArrinho={};
 	$scope.pessoa={};
 	$scope.pedido={};
 	$scope.tipoDePessoa={};
@@ -32,12 +33,12 @@ appWkg.controller("confirmarDadosController", function($scope,$http, carrinhoFac
 	
 	$scope.atualizarQuantidadeDosProdutos=function(){
 		for(var i=0; i<$scope.carrinho.length;i++){
-			$scope.carrinho[i].quantidadeDisponivel -=$scope.carrinho[i].quantidade;
-			$scope.carrinho[i].quantidadeReservada +=$scope.carrinho[i].quantidade;
+			$scope.produtoNoCarrinho=$scope.carrinho[i].quantidadeDisponivel -$scope.carrinho[i].quantidadeNoCarrinho;
+			$scope.produtoNoCarrinho=$scope.carrinho[i].quantidadeReservada +$scope.carrinho[i].quantidadeNoCarrinho;
 			
-			delete $scope.carrinho[i].quantidade;
+		
 			
-			$http.post("/produtos", $scope.carrinho[i]).then(function(response) {
+			$http.post("/produtos", $scope.produtoNoCarrinho).then(function(response) {
 								
 			}, function(response) {
 				window.alert("Erro ao finalizar o pedido!");
