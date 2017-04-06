@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 @Data
@@ -27,14 +30,13 @@ public class Pedido implements Serializable{
 	@ManyToOne
     @JoinColumn(name="pessoa_id")
     private Pessoa pessoa;
-	@ManyToMany( fetch = FetchType.EAGER)
-    @JoinColumn(name="produto_id")
-	private List<Produto> produtos;
+	@OneToMany(cascade= CascadeType.ALL)
+	private List<ItensPedido> itens;
 	private String data=converterData();
 	private String status;
 	@Embedded
 	private Endereco enderecoDeEntrega;
-
+	
 //private String tipoDePagamento;
 
 	private String converterData(){

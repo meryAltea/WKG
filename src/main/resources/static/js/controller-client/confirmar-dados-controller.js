@@ -33,17 +33,18 @@ appWkg.controller("confirmarDadosController", function($scope,$http, carrinhoFac
 	
 	$scope.atualizarQuantidadeDosProdutos=function(){
 		for(var i=0; i<$scope.carrinho.length;i++){
-			$scope.produtoNoCarrinho=$scope.carrinho[i].quantidadeDisponivel -$scope.carrinho[i].quantidadeNoCarrinho;
-			$scope.produtoNoCarrinho=$scope.carrinho[i].quantidadeReservada +$scope.carrinho[i].quantidadeNoCarrinho;
+			$scope.carrinho[i].quantidadeDisponivelParaCompra -=$scope.carrinho[i].quantidadeNoCarrinho;
+			$scope.carrinho[i].quantidadeReservada +=$scope.carrinho[i].quantidadeNoCarrinho;
 			
-		
+			$scope.carrinho[i].quantidadeNoCarrinho;
 			
-			$http.post("/produtos", $scope.produtoNoCarrinho).then(function(response) {
-								
-			}, function(response) {
-				window.alert("Erro ao finalizar o pedido!");
-			});
-			
+//			$http.post("/produtos", $scope.carrinho[i]).then(function(response) {
+//						
+//				console.log($scope.carrinho[i]);
+//			}, function(response) {
+//				window.alert("Erro ao finalizar o pedido!");
+//			});
+//			
 		}
 	};
 

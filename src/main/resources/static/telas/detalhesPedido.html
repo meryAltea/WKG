@@ -3,13 +3,14 @@
 		<h1>{{pedido.pessoa.nome}}</h1>
 		<h1>{{pedido.enderecoDeEntrega}}</h1>
 		<h2>{{pedido.id}}</h2>
+		<h2>{{pedido.produto.quantidadeNoCarrinho}}</h2>
 
 	</div>	
 	<div ng-show="pedido.pessoa.tipoDePessoa=='juridica'">
 		<h1>{{pedido.pessoa.razaoSocial}}</h1>
 		<h2>{{pedido.pessoa.inscricaoMunicipal}}</h2>
 		<h2>{{pedido.enderecoDeEntrega}}</h2>
-
+		<h2>{{pedido.produto.quantidadeNoCarrinho}}</h2>
 	</div>	
 
 </div>

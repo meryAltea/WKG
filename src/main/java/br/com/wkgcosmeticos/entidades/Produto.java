@@ -38,8 +38,6 @@ public class Produto {
 	@Column 
 	private float preco;
 	@Column
-	private Integer quantidadeNoCarrinho;
-	@Column
 	private Integer quantidadeDisponivelParaCompra;
 	@Column
 	private Integer quantidadeReservada;
@@ -47,6 +45,8 @@ public class Produto {
 	@OneToMany (mappedBy="produto")
 	private List<FileUpload> fotos;
 	private boolean statusNaLoja;
+	@OneToMany(cascade= CascadeType.ALL)
+	private List<ItensPedido> itens;
 
 	
 	
