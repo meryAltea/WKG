@@ -30,7 +30,7 @@ public class Pedido implements Serializable{
 	@ManyToOne
     @JoinColumn(name="pessoa_id")
     private Pessoa pessoa;
-	@OneToMany(cascade= CascadeType.ALL)
+	@OneToMany(cascade= CascadeType.ALL, fetch= FetchType.LAZY, mappedBy= "pedido", orphanRemoval= true)
 	private List<ItensPedido> itens;
 	private String data=converterData();
 	private String status;
@@ -50,4 +50,11 @@ public class Pedido implements Serializable{
 		return resultado;
 	}
 	
+	public void setItens(List<ItensPedido> listaDeitens){
+		this.itens=listaDeitens;
+	}
+	
+	public void adicionar(ItensPedido itensPedido){
+		this.itens.add(itensPedido);
+	}
 }

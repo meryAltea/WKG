@@ -1,21 +1,36 @@
 package br.com.wkgcosmeticos.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Data;
+@Data
 @Entity
-public class ItensPedido {
+public class ItensPedido implements Serializable{
 	@Id
-	@GeneratedValue
-	private Integer id;
 	@ManyToOne
-	@JoinColumn
-	private Produto produtos;
+	private Produto produto;
+	@Id
 	@ManyToOne
-	@JoinColumn
+	@JsonIgnore
 	private Pedido pedido;
 	private Integer quantidade;
+	
+	public ItensPedido() {
+		
+	}
+
+	public ItensPedido(Produto produto, Pedido pedido, Integer quantidade) {
+		
+		this.produto = produto;
+		this.pedido = pedido;
+		this.quantidade = quantidade;
+	}
 }
