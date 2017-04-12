@@ -1,5 +1,6 @@
 package br.com.wkgcosmeticos.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.wkgcosmeticos.entidades.ItensPedido;
 import br.com.wkgcosmeticos.entidades.Pedido;
-
+import br.com.wkgcosmeticos.entidades.Produto;
 import br.com.wkgcosmeticos.service.PedidoService;
 
 @RestController
@@ -22,6 +24,12 @@ public class PedidoController {
 	
 	@RequestMapping(value = "/pedidos", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Pedido cadastrar(@RequestBody Pedido pedido) {
+		 ItensPedido itens= pedido.getItens().get(0);
+		 Produto produto= itens.getProduto();
+		 int quantidade=1;
+		 ItensPedido itensPedido= new ItensPedido(produto, pedido, quantidade);
+		 pedido.setItens(new ArrayList<ItensPedido>());
+		 pedido.adicionar(itensPedido);
 		return pedidoService.cadastrar(pedido);
 	}
 
