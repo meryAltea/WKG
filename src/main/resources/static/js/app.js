@@ -31,7 +31,7 @@ $routeProvider
 	controller : 'categoriaController'
 }).when("/upload/:produtoId", {
 	templateUrl : 'telas/upload.html',
-	controller : 'fileController'
+	controller : 'uploadController'
 }).when("/pedidos", {
 	templateUrl : 'telas/pedido.html',
 	controller : 'pedidoController'

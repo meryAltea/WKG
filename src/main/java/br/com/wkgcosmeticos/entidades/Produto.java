@@ -6,14 +6,7 @@ package br.com.wkgcosmeticos.entidades;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.Data;
 
@@ -42,8 +35,10 @@ public class Produto {
 	@Column
 	private Integer quantidadeReservada;
 //	@NotNull
-	@OneToMany (mappedBy="produto")
+	@OneToMany (mappedBy="produto", fetch = FetchType.LAZY)
 	private List<FileUpload> fotos;
+
+
 	private boolean statusNaLoja;
 	@OneToMany(cascade= CascadeType.ALL)
 	private List<ItensPedido> itens;

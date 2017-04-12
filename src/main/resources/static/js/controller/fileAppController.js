@@ -1,37 +1,84 @@
-appUsuario.controller('fileController', function ($scope, $routeParams,$http) {
-    $scope.partialDownloadLink = 'http://localhost:8080/admin/download?fileName=';
-    $scope.fileName = '';
-    $scope.produtoId=$routeParams.produtoId;
-    $scope.imagens=[];
-    $scope.imagem={};
-    
-    var mostrarTodos = function() {
-		$http.get("/admin/imagens").then(function(response) {
-			$scope.imagens = response.data;
-			console.log($scope.imagens);
-		}, function(response) {
-			window.alert("Não foi possível exibir os produtos!");
-		});
+appUsuario.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+
+            element.bind('change', function () {
+                scope.$apply(function () {
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
     };
-	$scope.excluirImagem= function(id){
-		 if(window.confirm("Tem certeza que deseja excluir?")){
-			$http.delete("/admin/imagens/"+id ).then (function(){
-				window.alert("Excluído com sucesso!");
-				
-				mostrarTodos();
-			}, function(){
-				window.alert("Não foi possível excluir!")
-			});
-		 }
-	};
-	
-    $scope.uploadFile = function() {
-        $scope.processDropzone();
+}]);
+
+
+
+
+appUsuario.controller('uploadController', ['$http', '$scope','$routeParams', function ($http, $scope, $routeParams) {
+    $scope.imagem = {};
+    $scope.imagens = [];
+
+    $scope.uploadFile = function () {
+        var file = $scope.myFile;
+
+        console.log('file is ');
+        console.dir(file);
+
+        var uploadUrl = "/admin/upload/" + $routeParams.produtoId;
+
+        var fd = new FormData();
+        fd.append('file', file);
+
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        }).then(function (response) {
+
+            $scope.imagens.push(response.data)
+
+        }, function (response) {
+            window.alert("falhou " );
+        })
+
     };
 
-    $scope.reset = function() {
-        $scope.resetDropzone();
+    // Buscando todas as imagens de um produto especifico
+    var mostrarTodos = function () {
+
+        $http.get("/admin/imagens/"+$routeParams.produtoId).then(function (response) {
+            $scope.imagens = response.data;
+            console.log($scope.imagens);
+        }, function (response) {
+            window.alert("Não foi possível exibir os produtos!");
+        });
     };
+
+    //Exclui imagem especifica
+    $scope.excluirImagem = function (imagemId) {
+        if (window.confirm("Tem certeza que deseja excluir?")) {
+            $http.delete("/admin/imagens/" + imagemId).then(function () {
+                mostrarTodos();
+               // $scope.imagens =  removerID(imagemId, $scope.imagens )
+                window.alert("Excluído com sucesso!");
+            }, function () {
+                window.alert("Não foi possível excluir!")
+            });
+        }
+
+    };
+
+    //Transformar em utilitario depois
+
+    var removerID = function (id, arr) {
+        return arr.map(function (obj) {
+            if (obj.id != id) return obj;
+            else return false;
+        }).filter(Boolean);
+    }
+
     mostrarTodos();
-});
 
+}]);

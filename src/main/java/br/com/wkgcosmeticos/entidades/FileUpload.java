@@ -2,12 +2,7 @@ package br.com.wkgcosmeticos.entidades;
 
 import java.util.Arrays;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,6 +17,7 @@ public class FileUpload {
 	
 	private String fileName;
 
+	@Transient
 	@Lob
 	private byte[] file;
 	@JoinColumn @ManyToOne @JsonIgnore
