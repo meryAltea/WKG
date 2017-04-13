@@ -25,7 +25,7 @@ public class FileHelper {
         try {
             Path pathFile = Paths.get(UPLOAD_PATH + "/" + fileName);
 
-            //Saving the file
+            //Saving the arquivo
             Files.write(pathFile, bytes);
 
         } catch (Exception e) {

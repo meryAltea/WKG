@@ -3,12 +3,12 @@
 	<div class="col s12 teal-text text-accent-4" >{{produtos[produtoId-1].nome}}</div>
 <!-- <div ng-repeat=" in produtos"> -->
 
-	<div class="col s2" ng-repeat="img in produtos[produtoId-1].fotos" style="margin:20px; display:inline-block; padding:-5px;"><img class ="materialboxed" ng-src="data:image/JPEG;base64,{{img.file}}" class="responsive-img" width="100" style="display:inline;"/>
+	<div class="col s2" ng-repeat="img in produtos[produtoId-1].fotos" style="margin:20px; display:inline-block; padding:-5px;"><img class ="materialboxed" ng-src="data:image/JPEG;base64,{{img.arquivo}}" class="responsive-img" width="100" style="display:inline;"/>
 	</div>
-	<div class="col s6 offset-s6" style="margin:-10px; text-align:right;" ><p class="teal-text"> Referência:{{produtos[produtoId-1].codigo}}</p>
+	<div class="col s6 offset-s6" style="margin:-10px; text-align:right;" ><p class="teal-text"> Referï¿½ncia:{{produtos[produtoId-1].codigo}}</p>
 	<p class="teal-text"> Categoria:{{produtos[produtoId-1].categoria.descricao}}</p>
 	<p class="teal-text"> Linha:{{produtos[produtoId-1].linha}}</p>
-	<p class="teal-text"> Descrição:{{produtos[produtoId-1].descricao}}</p>
+	<p class="teal-text"> Descriï¿½ï¿½o:{{produtos[produtoId-1].descricao}}</p>
 	<p class="teal-text"> {{"R$"+produtos[produtoId-1].preco}}</p>
 	<p class="teal-text"> Quantidade/estoque:{{produtos[produtoId-1].quantidade}}</p>
 	<div class="block" style="display:inline-block;" >

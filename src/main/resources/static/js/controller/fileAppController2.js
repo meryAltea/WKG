@@ -1,5 +1,5 @@
 appUsuario.controller('fileController', function ($scope, $routeParams,$http) {
-    $scope.partialDownloadLink = 'http://localhost:8080/admin/download?fileName=';
+    $scope.partialDownloadLink = 'http://localhost:8080/admin/download?nome=';
     $scope.fileName = '';
     $scope.produtoId=$routeParams.produtoId;
     $scope.imagens=[];

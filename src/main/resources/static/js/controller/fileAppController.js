@@ -15,16 +15,21 @@ appUsuario.directive('fileModel', ['$parse', function ($parse) {
 }]);
 
 
-
-
-appUsuario.controller('uploadController', ['$http', '$scope','$routeParams', function ($http, $scope, $routeParams) {
+appUsuario.controller('uploadController', ['$http', '$scope', '$routeParams', function ($http, $scope, $routeParams) {
     $scope.imagem = {};
     $scope.imagens = [];
+    $scope.produto = {};
 
+    //buscand produto selecionado para carregar fotos
+    $http.get('admin/produtos/' + $routeParams.produtoId).then(function (response) {
+        $scope.produto = response.data;
+    });
+
+    //faz envio da imagem
     $scope.uploadFile = function () {
         var file = $scope.myFile;
 
-        console.log('file is ');
+        console.log('arquivo is ');
         console.dir(file);
 
         var uploadUrl = "/admin/upload/" + $routeParams.produtoId;
@@ -40,7 +45,7 @@ appUsuario.controller('uploadController', ['$http', '$scope','$routeParams', fun
             $scope.imagens.push(response.data)
 
         }, function (response) {
-            window.alert("falhou " );
+            window.alert("falhou ");
         })
 
     };
@@ -48,7 +53,7 @@ appUsuario.controller('uploadController', ['$http', '$scope','$routeParams', fun
     // Buscando todas as imagens de um produto especifico
     var mostrarTodos = function () {
 
-        $http.get("/admin/imagens/"+$routeParams.produtoId).then(function (response) {
+        $http.get("/admin/imagens/" + $routeParams.produtoId).then(function (response) {
             $scope.imagens = response.data;
             console.log($scope.imagens);
         }, function (response) {
@@ -61,7 +66,7 @@ appUsuario.controller('uploadController', ['$http', '$scope','$routeParams', fun
         if (window.confirm("Tem certeza que deseja excluir?")) {
             $http.delete("/admin/imagens/" + imagemId).then(function () {
                 mostrarTodos();
-               // $scope.imagens =  removerID(imagemId, $scope.imagens )
+                //$scope.imagens =  removerID(imagemId, $scope.imagens )
                 window.alert("Excluído com sucesso!");
             }, function () {
                 window.alert("Não foi possível excluir!")
@@ -71,7 +76,7 @@ appUsuario.controller('uploadController', ['$http', '$scope','$routeParams', fun
     };
 
     //Transformar em utilitario depois
-
+    //Remove um elemento do Array por id
     var removerID = function (id, arr) {
         return arr.map(function (obj) {
             if (obj.id != id) return obj;

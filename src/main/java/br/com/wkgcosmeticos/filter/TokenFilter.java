@@ -1,4 +1,4 @@
-package br.com.wkgcosmeticos.controller;
+package br.com.wkgcosmeticos.filter;
 
 import java.io.IOException;
 

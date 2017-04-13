@@ -2,7 +2,7 @@
 <button ng-click="uploadFile()">upload me</button>
 
 <div class="row">
-    <h4>Imagens Cadastradas</h4>
+    <h4>Imagens Cadastradas / ${{produto.nome}}</h4>
     <div class="section col s4  offset-s4">
 
         <div ng-repeat="img in imagens">
@@ -10,10 +10,9 @@
             <ul class="collection">
                 <li class="collection-item ">
                     <div>
-                        {{img.id + '-'+ img.fileName}}
-                        <img ng-src="data:image/JPEG;base64,{{img.file}}" width="50"/>
+                        {{img.id + '-'+ img.nome}}
+                        <img ng-src="data:image/JPEG;base64,{{img.arquivo}}" width="50"/>
 
-                        <!--<img ng-src="produtos/{{img.fileName}}" width="50"/>-->
                        <a href="#!"
                            class="secondary-content" ng-click="excluirImagem(img.id)">
                             <i class="material-icons">delete</i>

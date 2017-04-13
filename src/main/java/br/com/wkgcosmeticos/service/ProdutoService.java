@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.wkgcosmeticos.entidades.Produto;
-import br.com.wkgcosmeticos.repository.FileUploadRepository;
+import br.com.wkgcosmeticos.repository.ImagemRepository;
 import br.com.wkgcosmeticos.repository.ProdutoRepository;
 
 @Service
@@ -14,7 +14,7 @@ public class ProdutoService {
 	@Autowired
 	ProdutoRepository produtoRepository;
 	@Autowired
-	FileUploadRepository fileUploadRepository;
+	ImagemRepository fileUploadRepository;
 
 	public Produto cadastrar(Produto produto) {
 		return produtoRepository.save(produto);
@@ -34,7 +34,7 @@ public class ProdutoService {
 //	public List <Produto> buscarTodos() {
 //		 List<Produto> produtos = produtoRepository.findAll();
 //		 for(Produto p: produtos){
-//			List<FileUpload> fotos= fileUploadRepository.buscarPorProdutoId(p.getId());
+//			List<Imagem> fotos= fileUploadRepository.buscarPorProdutoId(p.getId());
 //			p.setFotos(fotos);
 //		 }
 //		 return produtos;
@@ -43,7 +43,7 @@ public class ProdutoService {
 //	public Collection<Produto> buscarTodosComFotoCapa() {
 //		 List<Produto> produtos = produtoRepository.findAll();
 //		 for(Produto p:produtos){
-//			 FileUpload fileUpload = fileUploadRepository.buscarCapaPorProdutoId(p.getId()).get(0);
+//			 Imagem fileUpload = fileUploadRepository.buscarCapaPorProdutoId(p.getId()).get(0);
 //			 p.adicionarFoto(fileUpload);
 //			 
 //		 }
@@ -52,6 +52,6 @@ public class ProdutoService {
 	
 
 	public Produto buscarPorId(Integer id) {
-		return produtoRepository.findOne(id);
+		return produtoRepository.buscarPorId(id);
 	}
 }

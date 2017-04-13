@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
-import br.com.wkgcosmeticos.controller.TokenFilter;
+import br.com.wkgcosmeticos.filter.TokenFilter;
 
 
 

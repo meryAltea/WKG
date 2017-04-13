@@ -47,7 +47,7 @@ public class Produto {
 	private Integer quantidadeReservada;
 //	@NotNull
 	@OneToMany (mappedBy="produto", fetch = FetchType.LAZY)
-	private List<FileUpload> fotos;
+	private List<Imagem> fotos;
 
 
 	private boolean statusNaLoja;
@@ -55,8 +55,17 @@ public class Produto {
 	@JsonIgnore
 	private List<ItensPedido> itens;
 
-	
-	
+
+	public Produto(){
+
+	}
+
+	public Produto (Integer id, String nome, String descricao){
+
+			this.id=id;
+			this.nome=nome;
+			this.descricao=descricao;
+	}
 		
 	
 }

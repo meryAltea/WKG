@@ -1,33 +1,30 @@
 package br.com.wkgcosmeticos.controller;
 
-import br.com.wkgcosmeticos.entidades.FileUpload;
+import br.com.wkgcosmeticos.entidades.Imagem;
 import br.com.wkgcosmeticos.entidades.Produto;
 import br.com.wkgcosmeticos.helper.FileHelper;
-import br.com.wkgcosmeticos.repository.FileUploadRepository;
+import br.com.wkgcosmeticos.repository.ImagemRepository;
 import br.com.wkgcosmeticos.repository.ProdutoRepository;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/admin")
-public class FileController {
+public class ImagemController {
 
     @Autowired
-    FileUploadRepository repository;
+    ImagemRepository repository;
     @Autowired
     ProdutoRepository produtoRepository;
 
@@ -40,11 +37,11 @@ public class FileController {
      * @return o imagen recem enviada para inclusão na lista de imagem na tela
      */
     @PostMapping(value = "/upload/{id}")
-    public ResponseEntity<FileUpload> uploadFile(MultipartHttpServletRequest request, @PathVariable("id") Integer produtoId) {
+    public ResponseEntity<Imagem> uploadFile(MultipartHttpServletRequest request, @PathVariable("id") Integer produtoId)  {
 
         Produto produto = produtoRepository.findOne(produtoId);
 
-        FileUpload fileUpload=null;
+        Imagem imagem =null;
         try {
 
             //  request.getFileNames() =   {"Foto1", "Foto2"}
@@ -62,42 +59,42 @@ public class FileController {
                 //https://www.w3.org/Protocols/rfc1341/4_Content-Type.html
                 String filename = file.getOriginalFilename();
 
-                //Dados do file
+                //Dados do arquivo
                 byte[] bytes = file.getBytes();
 
                 //Entidade que guarda as inf da foto
-                 fileUpload = new FileUpload(filename, bytes, mimeType, produto);
+                 imagem = new Imagem(filename, bytes, mimeType, produto);
 
                 //Salvando no diretorio
 
                 FileHelper.uploadImage(bytes, filename);
 
                 //Salvando no banco
-                repository.save(fileUpload);
+                repository.save(imagem);
             }
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        return new ResponseEntity<>(fileUpload , HttpStatus.OK);
+        return new ResponseEntity<>(imagem, HttpStatus.OK);
     }
 
 
     /**
      * Busca todos os registros de imagens e antes de exibir na tela,
      * acessa o arquivo fisico da imagem  na pasta e gera e transfornam a imagem em  byte[]
-     * para inclusao no objeto fileUpload na propriedade file, sendo assim gerado no json
+     * para inclusao no objeto fileUpload na propriedade arquivo, sendo assim gerado no json
      * @return
      */
     @GetMapping(value = "/imagens/{produtoId}")
-    public Collection<FileUpload> buscarTodos(@PathVariable("produtoId") Integer produtoId) {
+    public Collection<Imagem> buscarTodos(@PathVariable("produtoId") Integer produtoId) {
         //busca todos registro no banco sem image, apenas com nome da imagem
-        List<FileUpload> lista = repository.buscarPorProdutoId(produtoId);
+        List<Imagem> lista = repository.buscarPorProdutoId(produtoId);
 
 
-        for (FileUpload fileUpload : lista) {
+        for (Imagem imagem : lista) {
             try {
-                fileUpload.setFile(FileHelper.imagenToByte(fileUpload.getFileName()));
+                imagem.setArquivo(FileHelper.imagenToByte(imagem.getNome()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -112,8 +109,8 @@ public class FileController {
     @DeleteMapping(value = "/imagens/{id}")
     public void excluir(@PathVariable Integer id) {
 
-        FileUpload file = repository.findOne(id);
-        FileHelper.remove(file.getFileName());
+        Imagem file = repository.findOne(id);
+        FileHelper.remove(file.getNome());
 
         //Removendo do banco
         repository.delete(id);
